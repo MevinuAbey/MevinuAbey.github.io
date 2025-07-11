@@ -14,7 +14,7 @@
         body {
             font-family: 'Inter', sans-serif;
             /* Changed to a dark, subtle background image for "dark light" effect */
-            background-image: url('https://i.ibb.co/G4yLZjXS/Whats-App-Image-2024-09-07-at-14-49-17-a70fc409.jpg'); /* Darker placeholder image */
+            background-image: url('https://i.ibb.co/G4yLZjXS/Whats-App-Image-2024-09-07-at-14-49-17-a70fc409.jpg'); /* Your background image */
             background-color: transparent; /* Ensure no solid background color interferes */
             background-size: cover;
             background-position: center;
@@ -24,7 +24,7 @@
             flex-direction: column; /* Allow content to stack vertically */
             align-items: center;
             min-height: 100vh; /* Ensure full viewport height */
-            padding: 2rem; /* Add some padding around the content */
+            padding: 1rem; /* Reduced default padding for smaller screens */
             overflow-y: auto; /* Allow scrolling for projects page */
             position: relative; /* Needed for absolute positioning of button relative to body */
         }
@@ -35,13 +35,13 @@
             backdrop-filter: blur(10px); /* Glassmorphic blur effect */
             border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
             border-radius: 1.5rem; /* Rounded corners */
-            padding: 2rem;
+            padding: 1.5rem; /* Adjusted padding for container */
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
             max-width: 1200px; /* Max width for content */
             width: 100%; /* Full width up to max-width */
             /* Adjusted margin-top to account for the button's height and its top positioning */
             margin-top: 5rem; /* Increased margin-top to push content below the button */
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Adjusted margin */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,12 +49,12 @@
 
         /* Styles for individual project cards */
         .project-card {
-            background-color: rgba(255, 255, 255, 0.15); /* Slightly less transparent for distinction */
+            background-color: rgba(0, 0, 0, 0.3); /* Slightly less transparent for distinction */
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1rem;
-            width: calc(33% - 2rem); /* Three columns on larger screens */
+            padding: 1rem; /* Reduced padding for mobile */
+            margin: 0.75rem; /* Reduced margin for mobile */
+            width: calc(100% - 1.5rem); /* Single column on small screens by default */
             min-width: 280px; /* Minimum width for project cards */
             display: flex;
             flex-direction: column;
@@ -76,6 +76,14 @@
             gap: 1rem; /* Gap between project cards */
         }
 
+        /* Responsive adjustments for project card content */
+        .project-card h2 {
+            font-size: 1.5rem; /* Default for small screens */
+        }
+        .project-card p {
+            font-size: 0.85rem; /* Default for small screens */
+        }
+
         /* Styles for the glassmorphic button */
         .glass-button {
             background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
@@ -91,15 +99,44 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
         }
 
-        @media (max-width: 1024px) {
+        /* Media queries for larger screens */
+        @media (min-width: 640px) { /* sm breakpoint */
+            body {
+                padding: 1.5rem;
+            }
+            .glass-container {
+                padding: 2rem;
+                margin-top: 6rem; /* Adjust for larger button/spacing */
+                margin-bottom: 2rem;
+            }
             .project-card {
-                width: calc(50% - 2rem); /* Two columns on medium screens */
+                padding: 1.5rem;
+                margin: 1rem;
+                width: calc(50% - 2rem); /* Two columns on small-medium screens */
+            }
+            .project-card h2 {
+                font-size: 1.75rem;
+            }
+            .project-card p {
+                font-size: 0.95rem;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (min-width: 1024px) { /* lg breakpoint */
+            body {
+                padding: 2rem;
+            }
+            .glass-container {
+                margin-top: 8rem; /* Further adjust for larger screens */
+            }
             .project-card {
-                width: calc(100% - 2rem); /* Single column on small screens */
+                width: calc(33.333% - 2rem); /* Three columns on large screens */
+            }
+            .project-card h2 {
+                font-size: 2rem;
+            }
+            .project-card p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -108,48 +145,48 @@
 
     <!-- Back to Home Button in Top Left Corner -->
     <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-        <a href="index.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
+        <a href="index.html" class="glass-button text-black text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Home
         </a>
     </div>
 
     <!-- Main Projects Container -->
     <div class="glass-container">
-        <h1 class="text-white text-5xl md:text-6xl font-bold mb-8 drop-shadow-lg">My Projects</h1>
+        <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-8 drop-shadow-lg">My Projects</h1>
 
         <div class="projects-grid">
             <!-- Project Card 1 -->
             <a href="project-ai-chatbot.html" class="project-card">
                 <img src="https://placehold.co/150x100/3498db/ffffff?text=AI+Chatbot" alt="AI Chatbot Project" class="rounded-lg mb-4">
-                <h2 class="text-white text-2xl font-semibold mb-2">AI Chatbot</h2>
-                <p class="text-gray-200 text-sm">A conversational AI assistant built with natural language processing.</p>
+                <h2 class="text-white font-semibold mb-2">AI Chatbot</h2>
+                <p class="text-gray-200">A conversational AI assistant built with natural language processing.</p>
             </a>
 
             <!-- Project Card 2 -->
             <a href="project-portfolio-website.html" class="project-card">
                 <img src="https://placehold.co/150x100/2ecc71/ffffff?text=Portfolio+Site" alt="Portfolio Website Project" class="rounded-lg mb-4">
-                <h2 class="text-white text-2xl font-semibold mb-2">Personal Portfolio Website</h2>
-                <p class="text-gray-200 text-sm">This very website, showcasing responsive design and glassmorphic UI.</p>
+                <h2 class="text-white font-semibold mb-2">Personal Portfolio Website</h2>
+                <p class="text-gray-200">This very website, showcasing responsive design and glassmorphic UI.</p>
             </a>
 
             <!-- Project Card 3 -->
             <a href="project-game-dev.html" class="project-card">
                 <img src="https://placehold.co/150x100/e74c3c/ffffff?text=Game+Dev" alt="Game Development Project" class="rounded-lg mb-4">
-                <h2 class="text-white text-2xl font-semibold mb-2">Simple 2D Game</h2>
-                <p class="text-gray-200 text-sm">A small interactive game developed using HTML Canvas and JavaScript.</p>
+                <h2 class="text-white font-semibold mb-2">Simple 2D Game</h2>
+                <p class="text-gray-200">A small interactive game developed using HTML Canvas and JavaScript.</p>
             </a>
 
             <!-- Add more project cards here following the same structure -->
             <a href="project-data-analysis.html" class="project-card">
                 <img src="https://placehold.co/150x100/f39c12/ffffff?text=Data+Analysis" alt="Data Analysis Project" class="rounded-lg mb-4">
-                <h2 class="text-white text-2xl font-semibold mb-2">E-commerce Data Analysis</h2>
-                <p class="text-gray-200 text-sm">Analyzing sales data to identify trends and customer behavior.</p>
+                <h2 class="text-white font-semibold mb-2">E-commerce Data Analysis</h2>
+                <p class="text-gray-200">Analyzing sales data to identify trends and customer behavior.</p>
             </a>
 
             <a href="project-mobile-app.html" class="project-card">
                 <img src="https://placehold.co/150x100/9b59b6/ffffff?text=Mobile+App" alt="Mobile App Project" class="rounded-lg mb-4">
-                <h2 class="text-white text-2xl font-semibold mb-2">Recipe Finder Mobile App</h2>
-                <p class="text-gray-200 text-sm">A mobile application to discover recipes based on available ingredients.</p>
+                <h2 class="text-white font-semibold mb-2">Recipe Finder Mobile App</h2>
+                <p class="text-gray-200">A mobile application to discover recipes based on available ingredients.</p>
             </a>
         </div>
     </div>
