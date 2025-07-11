@@ -23,8 +23,9 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 1rem; /* Reduced default padding for smaller screens */
             overflow-y: auto; /* Allow scrolling for project detail page */
+            position: relative; /* Needed for absolute positioning of button relative to body */
         }
 
         /* Styles for the glassmorphic container for project details */
@@ -33,12 +34,13 @@
             backdrop-filter: blur(10px); /* Glassmorphic blur effect */
             border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
             border-radius: 1.5rem; /* Rounded corners */
-            padding: 2rem;
+            padding: 1.5rem; /* Adjusted padding for container */
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
             max-width: 900px; /* Max width for content */
             width: 100%; /* Full width up to max-width */
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            /* Adjusted margin-top to account for the button's height and its top positioning */
+            margin-top: 5rem; /* Increased margin-top to push content below the button */
+            margin-bottom: 1.5rem; /* Adjusted margin */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -47,18 +49,40 @@
 
         /* Specific styling for project content */
         .project-content h2 {
-            font-size: 2.5rem; /* Larger heading for sections */
+            /* Responsive font sizes for h2 */
+            font-size: 1.75rem; /* Default for small screens */
             color: #fff;
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
             font-weight: bold;
         }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .project-content h2 {
+                font-size: 2rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .project-content h2 {
+                font-size: 2.5rem;
+            }
+        }
 
         .project-content p {
-            font-size: 1.1rem;
+            /* Responsive font sizes for paragraphs */
+            font-size: 0.95rem; /* Default for small screens */
             color: #e2e8f0; /* Light gray text */
             line-height: 1.6;
             margin-bottom: 1rem;
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .project-content p {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .project-content p {
+                font-size: 1.1rem;
+            }
         }
 
         .project-content ul {
@@ -66,10 +90,24 @@
             margin-left: 1.5rem;
             color: #e2e8f0;
             margin-bottom: 1rem;
+            /* Responsive font sizes for list items */
+            font-size: 0.95rem; /* Default for small screens */
         }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .project-content ul {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .project-content ul {
+                font-size: 1.1rem;
+            }
+        }
+
 
         .project-content img {
             max-width: 100%;
+            height: auto; /* Ensure aspect ratio is maintained */
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -85,6 +123,17 @@
             margin: 0.5rem;
             transition: background-color 0.3s ease, transform 0.3s ease;
             text-decoration: none;
+            font-size: 0.9rem; /* Smaller default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .project-links a {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .project-links a {
+                font-size: 1.1rem;
+            }
         }
 
         .project-links a:hover {
@@ -123,7 +172,7 @@
 
     <!-- Main Project Detail Container -->
     <div class="glass-detail-container">
-        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">[Your Project Title Here]</h1>
+        <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">[Your Project Title Here]</h1>
 
         <div class="project-links flex flex-wrap justify-center mb-8">
             <a href="https://github.com/yourusername/your-project-repo" target="_blank">
