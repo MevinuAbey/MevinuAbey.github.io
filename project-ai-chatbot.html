@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mevinu Abeysinghe - Project: [Project Name]</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom font for a modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Always use the background image for the glassmorphic effect */
+            background-image: url('https://i.ibb.co/G4yLZjXS/Whats-App-Image-2024-09-07-at-14-49-17-a70fc409.jpg'); /* Your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keep background fixed when content moves */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            overflow-y: auto; /* Allow scrolling for project detail page */
+        }
+
+        /* Styles for the glassmorphic container for project details */
+        .glass-detail-container {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Glassmorphic blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            border-radius: 1.5rem; /* Rounded corners */
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
+            max-width: 900px; /* Max width for content */
+            width: 100%; /* Full width up to max-width */
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left; /* Align text left within the container */
+        }
+
+        /* Specific styling for project content */
+        .project-content h2 {
+            font-size: 2.5rem; /* Larger heading for sections */
+            color: #fff;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: #e2e8f0; /* Light gray text */
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .project-content img {
+            max-width: 100%;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            margin: 0.5rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .project-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .project-links a i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Projects Button -->
+    <div class="w-full max-w-7xl flex justify-start p-4">
+        <a href="projects.html" class="text-white text-lg md:text-xl bg-blue-500 hover:bg-blue-700 rounded-full px-6 py-2 transition duration-300 flex items-center shadow-lg">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+        </a>
+    </div>
+
+    <!-- Main Project Detail Container -->
+    <div class="glass-detail-container">
+        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">[Your Project Title Here]</h1>
+
+        <div class="project-links flex flex-wrap justify-center mb-8">
+            <a href="https://github.com/yourusername/your-project-repo" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+            <a href="https://your-project-live-demo.com" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+            <!-- Add more project-specific links as needed -->
+        </div>
+
+        <div class="project-content w-full px-4">
+            <img src="https://placehold.co/800x450/4a5568/ffffff?text=Project+Image+1" alt="Project Screenshot 1">
+            <p>
+                This is where you'll write a detailed description of your project. Explain its purpose, the problem it solves, and its key features.
+                You can talk about the technologies you used, the challenges you faced, and how you overcame them.
+            </p>
+            <p>
+                For example, if this were an AI Chatbot project, you might describe:
+                "This AI chatbot was developed using Python and the NLTK library for natural language processing. It's designed to provide quick answers to common customer queries, reducing support load by 30%."
+            </p>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li>Feature 1: Describe a key functionality.</li>
+                <li>Feature 2: Explain another important aspect.</li>
+                <li>Feature 3: Highlight a unique selling point.</li>
+            </ul>
+
+            <img src="https://placehold.co/800x450/4a5568/ffffff?text=Project+Image+2" alt="Project Screenshot 2">
+
+            <h2>Technologies Used</h2>
+            <p>
+                List the main technologies, languages, and frameworks you utilized in this project.
+                For instance: HTML, CSS (Tailwind CSS), JavaScript, Python, React, Node.js, Firebase, etc.
+            </p>
+
+            <h2>Lessons Learned</h2>
+            <p>
+                Reflect on what you learned during the development of this project. This could include new skills, problem-solving techniques, or insights into project management.
+            </p>
+
+            <!-- You can add more sections like "Future Enhancements", "Challenges", etc. -->
+
+        </div>
+    </div>
+
+</body>
+</html>
