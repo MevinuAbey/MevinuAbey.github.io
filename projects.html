@@ -25,6 +25,7 @@
             min-height: 100vh; /* Ensure full viewport height */
             padding: 2rem; /* Add some padding around the content */
             overflow-y: auto; /* Allow scrolling for projects page */
+            position: relative; /* Needed for absolute positioning of button relative to body */
         }
 
         /* Styles for the glassmorphic container for projects */
@@ -37,7 +38,8 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
             max-width: 1200px; /* Max width for content */
             width: 100%; /* Full width up to max-width */
-            margin-top: 2rem;
+            /* Adjusted margin-top to account for the button's height and its top positioning */
+            margin-top: 5rem; /* Increased margin-top to push content below the button */
             margin-bottom: 2rem;
             display: flex;
             flex-direction: column;
