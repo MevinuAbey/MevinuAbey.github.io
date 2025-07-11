@@ -73,6 +73,21 @@
             gap: 1rem; /* Gap between project cards */
         }
 
+        /* Styles for the glassmorphic button */
+        .glass-button {
+            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            backdrop-filter: blur(8px); /* Slightly less blur than the card */
+            border: 1px solid rgba(255, 255, 255, 0.25); /* Light border */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-button:hover {
+            background-color: rgba(255, 255, 255, 0.25); /* More opaque on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
         @media (max-width: 1024px) {
             .project-card {
                 width: calc(50% - 2rem); /* Two columns on medium screens */
@@ -88,9 +103,9 @@
 </head>
 <body>
 
-    <!-- Back to Home Button -->
-    <div class="w-full max-w-7xl flex justify-start p-4">
-        <a href="index.html" class="text-white text-lg md:text-xl bg-blue-500 hover:bg-blue-700 rounded-full px-6 py-2 transition duration-300 flex items-center shadow-lg">
+    <!-- Back to Home Button in Top Left Corner -->
+    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
+        <a href="index.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Home
         </a>
     </div>
