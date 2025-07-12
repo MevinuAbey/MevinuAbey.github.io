@@ -49,13 +49,20 @@
             align-items: center;
             text-align: center;
             max-width: 90%;
-            margin-top: 5rem; /* Space for the profile picture to overlap */
+            margin-top: 5rem; /* Space for the profile picture to overlap, adjusted by media query */
             min-width: 320px; /* Slightly larger min-width */
             animation: fadeInScale 1s ease-out forwards; /* Card entrance animation */
             opacity: 0; /* Start invisible */
             transform: scale(0.95); /* Start slightly smaller */
             z-index: 10; /* Ensure card is above particles */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added hover transition */
         }
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01); /* Subtle lift and scale on hover */
+            box-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.55); /* More intense shadow on hover */
+        }
+
 
         /* Keyframes for card entrance */
         @keyframes fadeInScale {
@@ -144,11 +151,37 @@
             to { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
+        /* Top Buttons Container */
+        .top-buttons-container {
+            position: absolute;
+            top: 1rem; /* Default for mobile */
+            left: 1rem; /* Default for mobile */
+            right: 1rem; /* Default for mobile */
+            z-index: 20;
+            display: flex;
+            justify-content: space-between; /* Space between items on larger screens */
+            align-items: center; /* Align items vertically in center for horizontal layout */
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 1rem; /* Gap between buttons */
+            padding: 0; /* No explicit padding on container, let buttons handle it */
+            max-width: calc(100% - 2rem); /* Ensure it doesn't go full width on mobile if small padding is desired */
+            margin: 0 auto; /* Center the container itself */
+        }
+
         /* Responsive Adjustments */
+        @media (min-width: 768px) { /* md breakpoint */
+            .top-buttons-container {
+                top: 2rem; /* Larger top margin for desktop */
+                left: 2rem;
+                right: 2rem;
+                max-width: calc(100% - 4rem);
+            }
+        }
+
         @media (max-width: 640px) {
             .glass-card {
                 padding: 1.5rem;
-                margin-top: 3rem;
+                margin-top: 6rem; /* Adjusted margin-top to account for stacked buttons */
             }
             .profile-pic {
                 width: 80px;
@@ -179,9 +212,17 @@
             /* Button container on mobile */
             .top-buttons-container {
                 flex-direction: column; /* Stack buttons vertically */
-                align-items: flex-start; /* Align to left */
-                padding: 1rem; /* Padding around stacked buttons */
+                align-items: center; /* Center stacked buttons */
+                padding: 0.5rem; /* Reduced padding for mobile */
                 gap: 0.75rem; /* Space between stacked buttons */
+                top: 0.5rem; /* Closer to top edge on small screens */
+                left: 0.5rem;
+                right: 0.5rem;
+                max-width: calc(100% - 1rem); /* Adjust max-width for smaller padding */
+            }
+            .top-buttons-container .glass-button {
+                width: 100%; /* Make buttons full width when stacked */
+                justify-content: center; /* Center content within button */
             }
         }
     </style>
@@ -192,7 +233,7 @@
     <canvas id="particleCanvas" class="absolute inset-0 z-0"></canvas>
 
     <!-- Top Buttons Container (Blog & Projects) -->
-    <div class="top-buttons-container absolute top-4 left-4 right-4 md:top-8 md:left-8 md:right-8 z-20 flex justify-between items-start flex-wrap gap-4">
+    <div class="top-buttons-container">
         <!-- Blog Button -->
         <a href="blog.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-blog mr-2"></i> View Blog
