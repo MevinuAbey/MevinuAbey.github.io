@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
             align-items: center;
             min-height: 100vh; /* Ensure full viewport height */
             overflow: hidden; /* Prevent scrolling */
-            position: relative; /* Needed for absolute positioning of popups */
+            position: relative; /* Needed for absolute positioning of buttons */
         }
 
         /* Styles for the central content card - this is the glassmorphic element */
@@ -63,127 +63,6 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
         }
 
-        /* Styles for the Contact Popup */
-        .contact-popup {
-            position: fixed; /* Use fixed to stay relative to viewport */
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 100%); /* Start hidden below the screen */
-            width: 90%; /* Responsive width */
-            max-width: 500px; /* Max width for desktop */
-            height: 0; /* Start with 0 height */
-            opacity: 0; /* Start invisible */
-            background-color: rgba(255, 255, 255, 0.15); /* Glassmorphic background */
-            backdrop-filter: blur(15px); /* Stronger blur for popup */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-top-left-radius: 1.5rem; /* Rounded top corners */
-            border-top-right-radius: 1.5rem;
-            box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out; /* Smooth transition */
-            z-index: 100; /* Ensure it's on top */
-            overflow: hidden; /* Hide content until fully open */
-        }
-
-        .contact-popup.open {
-            transform: translate(-50%, 0); /* Slide up to visible position */
-            height: 70vh; /* Max height when open */
-            opacity: 1; /* Fully visible */
-        }
-
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
-
-        .popup-messages {
-            flex-grow: 1;
-            padding: 1rem 1.5rem;
-            overflow-y: auto; /* Allow scrolling for messages */
-            color: #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .popup-input-area {
-            display: flex;
-            padding: 1rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .popup-input {
-            flex-grow: 1;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: #fff;
-            outline: none;
-            margin-right: 0.75rem;
-        }
-        .popup-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .popup-send-button {
-            background-color: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            color: #fff;
-            padding: 0.75rem 1.25rem;
-            border-radius: 0.75rem;
-            transition: background-color 0.3s ease;
-        }
-        .popup-send-button:hover {
-            background-color: rgba(255, 255, 255, 0.35);
-        }
-
-        /* Message bubble styles */
-        .message-bubble {
-            max-width: 80%;
-            padding: 0.6rem 1rem;
-            border-radius: 0.75rem;
-            margin-bottom: 0.75rem;
-            word-wrap: break-word;
-        }
-
-        .message-bubble.user {
-            background-color: rgba(0, 123, 255, 0.4); /* Blue-ish for user */
-            align-self: flex-end; /* Align to right */
-            margin-left: auto; /* Push to right */
-        }
-
-        .message-bubble.bot {
-            background-color: rgba(108, 117, 125, 0.4); /* Gray-ish for bot */
-            align-self: flex-start; /* Align to left */
-            margin-right: auto; /* Push to left */
-        }
-        .message-bubble strong {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        /* Loading indicator for Firebase */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
-            z-index: 200;
-        }
-
         /* Adjustments for smaller screens */
         @media (max-width: 640px) {
             .glass-card {
@@ -206,21 +85,10 @@
                 justify-content: center;
                 gap: 1rem; /* Space between wrapped links */
             }
-            .contact-popup {
-                width: 95%; /* Wider on very small screens */
-                height: 80vh; /* Taller on mobile */
-            }
-            .popup-header, .popup-messages, .popup-input-area {
-                padding: 0.75rem 1rem; /* Smaller padding */
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        Loading chat...
-    </div>
 
     <!-- Blog Button in Top Left Corner -->
     <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
@@ -293,215 +161,40 @@
         </div>
     </div>
 
-    <!-- Contact Me Button (Bottom Middle) -->
-    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
-        <button id="contactMeBtn" class="glass-button text-black text-base md:text-lg rounded-full px-6 py-3 flex items-center">
-            <i class="fas fa-comment-dots mr-2"></i> Contact Me
-        </button>
-    </div>
-
-    <!-- Contact Popup -->
-    <div id="contactPopup" class="contact-popup">
-        <div class="popup-header">
-            <h2 class="text-xl font-semibold">Contact Me <span id="userIdDisplay" class="text-sm opacity-70 ml-2"></span></h2>
-            <button id="closePopupBtn" class="text-white text-2xl leading-none hover:text-gray-300 transition duration-200">&times;</button>
-        </div>
-        <div class="popup-messages flex flex-col">
-            <!-- Messages will be appended here -->
-        </div>
-        <div class="popup-input-area">
-            <input type="text" id="messageInput" class="popup-input" placeholder="Type your message...">
-            <button id="sendMessageBtn" class="popup-send-button">Send</button>
-        </div>
-    </div>
-
-    <script type="module">
-        // Firebase SDK imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-        // Global variables for Firebase config and app 
-        const firebaseConfig = {
-          apiKey: "AIzaSyBiq4ZjsRxUDz1EO4G-yx10yiutezq5Hmg",
-          authDomain: "mevinuabeyweb.firebaseapp.com",
-          projectId: "mevinuabeyweb",
-          storageBucket: "mevinuabeyweb.firebasestorage.app",
-          messagingSenderId: "231962914694",
-          appId: "1:231962914694:web:47f7b4d040a4c0c79bc607",
-          measurementId: "G-5YK7XJ2QQW"
-        };
-
-        // For the Firestore path (artifacts/{appId}/public/data/chats), we'll use the projectId
-        const appId = firebaseConfig.projectId; // Use your Firebase Project ID here
-
-        // When deploying to GitHub Pages, there's no __initial_auth_token
-        const initialAuthToken = null;
-        // --- END: Firebase Configuration for GitHub Pages ---
-
-        let db;
-        let auth;
-        let userId = null;
-        let unsubscribeFromChat = null; // To store the unsubscribe function for real-time listener
-
-        const contactMeBtn = document.getElementById('contactMeBtn');
-        const contactPopup = document.getElementById('contactPopup');
-        const closePopupBtn = document.getElementById('closePopupBtn');
-        const messageInput = document.getElementById('messageInput');
-        const sendMessageBtn = document.getElementById('sendMessageBtn');
-        const popupMessages = document.querySelector('.popup-messages');
-        const userIdDisplay = document.getElementById('userIdDisplay');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-
-        // Function to add a message to the chat display
-        function addMessageToUI(sender, message, isUser) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message-bubble', 'text-white', isUser ? 'user' : 'bot');
-            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-            popupMessages.appendChild(messageElement);
-            popupMessages.scrollTop = popupMessages.scrollHeight; // Scroll to bottom
-        }
-
-        // Initialize Firebase and authenticate
-        async function initializeFirebase() {
-            try {
-                loadingOverlay.style.display = 'flex'; // Show loading overlay
-
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                // Sign in anonymously or with custom token
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        userIdDisplay.textContent = `(ID: ${userId.substring(0, 8)}...)`; // Display truncated ID
-                        console.log("Authenticated with userId:", userId);
-                        setupChatListener(); // Start listening for messages after auth
-                        loadingOverlay.style.display = 'none'; // Hide loading overlay
-                    } else {
-                        userId = null;
-                        userIdDisplay.textContent = '';
-                        console.log("User signed out or not authenticated.");
-                        if (unsubscribeFromChat) {
-                            unsubscribeFromChat(); // Stop listening if user signs out
-                        }
-                        loadingOverlay.style.display = 'none'; // Hide loading overlay
-                    }
-                });
-
-            } catch (error) {
-                console.error("Error initializing Firebase or authenticating:", error);
-                loadingOverlay.textContent = "Error loading chat. Please try again later.";
-            }
-        }
-
-        // Set up real-time listener for chat messages
-        function setupChatListener() {
-            if (!db || !userId) return;
-
-            // Define the collection path for public chat messages
-            const chatCollectionRef = collection(db, `artifacts/${appId}/public/data/chats`);
-            const q = query(chatCollectionRef, orderBy('timestamp')); // Order by timestamp
-
-            // Listen for real-time updates
-            unsubscribeFromChat = onSnapshot(q, (snapshot) => {
-                // Clear existing messages before rendering new ones to avoid duplicates
-                // Only clear if it's the initial load or a full refresh, not for every new message
-                if (!snapshot.metadata.hasPendingWrites) { // Only process committed changes
-                    popupMessages.innerHTML = ''; // Clear only if not a local pending write
-                }
-
-                snapshot.docs.forEach(doc => {
-                    const messageData = doc.data();
-                    // Check if message belongs to the current user or is a bot message
-                    const isCurrentUser = messageData.userId === userId;
-                    addMessageToUI(messageData.sender, messageData.messageText, isCurrentUser);
-                });
-            }, (error) => {
-                console.error("Error listening to chat messages:", error);
-                addMessageToUI('System', 'Error loading messages.', false);
-            });
-        }
-
-        // Send message function
-        async function sendMessage(message, sender) {
-            if (!db || !userId) {
-                console.error("Firebase not initialized or user not authenticated.");
-                addMessageToUI('System', 'Chat not ready. Please try again.', false);
-                return;
-            }
-
-            try {
-                // Add message to Firestore
-                await addDoc(collection(db, `artifacts/${appId}/public/data/chats`), {
-                    userId: userId,
-                    sender: sender,
-                    messageText: message,
-                    timestamp: serverTimestamp() // Use server timestamp for consistent ordering
-                });
-                messageInput.value = ''; // Clear input field
-            } catch (error) {
-                console.error("Error sending message:", error);
-                addMessageToUI('System', 'Failed to send message.', false);
-            }
-        }
-
-        // Simulate bot response
-        async function sendBotResponse(userMessage) {
-            // A very simple bot response logic
-            let botResponse = "I'm not sure how to respond to that. Can you please rephrase?";
-            if (userMessage.toLowerCase().includes("hello") || userMessage.toLowerCase().includes("hi")) {
-                botResponse = "Hello there! How can I assist you today?";
-            } else if (userMessage.toLowerCase().includes("project")) {
-                botResponse = "You can find all my projects on the 'Projects' page. Is there a specific project you'd like to know about?";
-            } else if (userMessage.toLowerCase().includes("blog")) {
-                botResponse = "Check out my blog for my latest thoughts and articles! What topic are you interested in?";
-            } else if (userMessage.toLowerCase().includes("contact")) {
-                botResponse = "You've found the contact chat! What's on your mind?";
-            }
-
-            // Save bot's response to Firestore
-            await sendMessage(botResponse, 'Mevinu');
-        }
-
-        // Event listeners
-        contactMeBtn.addEventListener('click', function() {
-            contactPopup.classList.add('open');
-            // Initial message when opening chat
-            if (popupMessages.children.length === 0) {
-                addMessageToUI('Mevinu', 'Hello! How can I help you today?', false);
-            }
-        });
-
-        closePopupBtn.addEventListener('click', function() {
-            contactPopup.classList.remove('open');
-        });
-
-        sendMessageBtn.addEventListener('click', async function() {
-            const message = messageInput.value.trim();
-            if (message) {
-                await sendMessage(message, 'You');
-                // Trigger bot response after user sends message
-                await sendBotResponse(message);
-            }
-        });
-
-        messageInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessageBtn.click();
-            }
-        });
-
-        // Initialize Firebase when the page loads
-        initializeFirebase();
+    <!-- Placeholder for Tawk.to Widget Code --
+ <!--Start of Tawk.to Script-->
+   <script type="text/javascript">
+       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+       (function(){
+       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+       s1.async=true;
+       s1.src='https://embed.tawk.to/68725e6f202056191421dbca/1ivvc1puk';
+       s1.charset='UTF-8';
+       s1.setAttribute('crossorigin','*');
+       s0.parentNode.insertBefore(s1,s0);
+       })();
+   </script>
+<!--End of Tawk.to Script-->
+    <!-- Go to tawk.to, sign up, create a property for your website, -->
+    <!-- and paste the generated JavaScript embed code here, just before the closing </body> tag. -->
+    <!-- Example (replace with your actual Tawk.to code): -->
+    <!--
+ 
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
+    -->
+    <!-- End of Tawk.to Widget code -->
+
 </body>
 </html>
+
 
