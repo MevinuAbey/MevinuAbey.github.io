@@ -6,7 +6,6 @@
     <title>Mevinu Abeysinghe</title>
     <!-- Google Site Verification Tag (Replace YOUR_UNIQUE_CODE) -->
     <meta name="google-site-verification" content="yoeJ3KadnyLggS18swFfqw7Gv_MjQg86cMOkDM-CNQw" />
-    <!-- <meta name="google-site-verification" content="YOUR_UNIQUE_CODE" /> -->
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN for icons -->
@@ -16,55 +15,132 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            /* Always use the background image for the glassmorphic effect */
             background-image: url('https://i.ibb.co/SXG8jd4N/futuristic-city-digital-art-hd-vaporwave.jpg'); /* Your background image */
-            background-size: cover;
-            background-position: center;
+            background-size: 110% 110%; /* Slightly larger to allow for subtle panning */
+            background-position: center center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Keep background fixed when content moves (though this is non-scrollable) */
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Ensure full viewport height */
-            /*overflow: hidden; /* Prevent scrolling */
-            overflow-y: auto;
-            position: relative; /* Needed for absolute positioning of buttons */
+            min-height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+            position: relative; /* Needed for absolute positioning of elements */
+            animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
+        }
+
+        /* Keyframes for background panning */
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         /* Styles for the central content card - this is the glassmorphic element */
         .glass-card {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-            backdrop-filter: blur(10px); /* Glassmorphic blur effect */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-            border-radius: 1.5rem; /* Rounded corners */
-            padding: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
-            position: relative; /* For absolute positioning of the profile pic */
+            background-color: rgba(255, 255, 255, 0.08); /* More subtle transparency */
+            backdrop-filter: blur(12px); /* Stronger blur for more depth */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border */
+            border-radius: 1.5rem;
+            padding: 2.5rem; /* Increased padding */
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45); /* More pronounced shadow */
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 90%; /* Responsive width */
-            margin-top: 4rem; /* Space for the profile picture to overlap */
-            min-width: 300px; /* Minimum width for smaller screens */
+            max-width: 90%;
+            margin-top: 5rem; /* Space for the profile picture to overlap */
+            min-width: 320px; /* Slightly larger min-width */
+            animation: fadeInScale 1s ease-out forwards; /* Card entrance animation */
+            opacity: 0; /* Start invisible */
+            transform: scale(0.95); /* Start slightly smaller */
+        }
+
+        /* Keyframes for card entrance */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         /* Styles for the glassmorphic button */
         .glass-button {
-            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
-            backdrop-filter: blur(8px); /* Slightly less blur than the card */
-            border: 1px solid rgba(255, 255, 255, 0.25); /* Light border */
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle base */
+            backdrop-filter: blur(10px); /* Good blur for buttons */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Defined border */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Soft shadow */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            color: #e0e0e0; /* Light gray text for buttons */
         }
 
         .glass-button:hover {
-            background-color: rgba(255, 255, 255, 0.25); /* More opaque on hover */
-            transform: translateY(-2px); /* Slight lift effect */
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+            background-color: rgba(255, 255, 255, 0.2); /* More opaque on hover */
+            transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+            border-color: rgba(255, 255, 255, 0.4); /* Border brightens on hover */
         }
 
-        /* Adjustments for smaller screens */
+        /* Profile Picture Animation */
+        .profile-pic {
+            animation: fadeInBounce 1.2s ease-out forwards; /* Profile pic entrance */
+            opacity: 0; /* Start invisible */
+            transform: translateY(30px); /* Start below position */
+            animation-delay: 0.5s; /* Delay after card appears */
+            position: absolute; /* Keep absolute positioning */
+            top: -64px; /* Adjusted to -64px for w-32 h-32 */
+            border-width: 4px;
+            border-color: #ffffff;
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5); /* Inner and outer glow */
+        }
+
+        @keyframes fadeInBounce {
+            0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+            60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Name and Tagline Animations */
+        .name-text {
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Subtle glow for text */
+            animation: fadeInText 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.2s; /* Delay after profile pic */
+            margin-top: 5rem; /* Adjusted for profile pic overlap and animation */
+        }
+
+        .tagline-text {
+            color: #e0e0e0;
+            animation: fadeInText 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.5s; /* Delay after name */
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Link Icons Animation */
+        .link-text a {
+            opacity: 0;
+            animation: popIn 0.5s ease-out forwards;
+            /* Staggered delays set via JS */
+            color: #a0d9ff; /* Brighter blue for icons */
+            text-shadow: 0 0 8px rgba(160, 217, 255, 0.3); /* Subtle glow */
+        }
+
+        .link-text a:hover {
+            transform: scale(1.15); /* More pronounced scale on hover */
+            color: #ffffff; /* White on hover */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Stronger glow */
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5) rotate(-30deg); }
+            to { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 640px) {
             .glass-card {
                 padding: 1.5rem;
@@ -73,18 +149,33 @@
             .profile-pic {
                 width: 80px;
                 height: 80px;
-                top: -40px;
+                top: -40px; /* Adjusted for smaller size */
                 border-width: 3px;
             }
-            /* Removed specific font-size for .name-text here to rely on Tailwind classes */
+            .name-text {
+                font-size: 3rem; /* Smaller font for name on small screens */
+                margin-top: 3.5rem; /* Adjust margin for smaller pic */
+            }
             .tagline-text {
                 font-size: 0.8rem; /* Smaller font for tagline */
             }
             .link-text {
                 font-size: 0.9rem; /* Smaller font for links */
-                flex-wrap: wrap; /* Allow links to wrap */
+                flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem; /* Space between wrapped links */
+                gap: 0.75rem; /* Reduced gap */
+            }
+            .link-text a {
+                padding: 0.5rem; /* Smaller padding for icons */
+            }
+            .glass-button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .absolute.top-4.left-4, .absolute.top-4.right-4 {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
             }
         }
     </style>
@@ -93,14 +184,14 @@
 
     <!-- Blog Button in Top Left Corner -->
     <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-        <a href="blog.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
+        <a href="blog.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-blog mr-2"></i> View Blog
         </a>
     </div>
 
     <!-- Projects Button in Top Right Corner -->
     <div class="absolute top-4 right-4 md:top-8 md:right-8 z-10">
-        <a href="projects.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
+        <a href="projects.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-folder-open mr-2"></i> View Projects
         </a>
     </div>
@@ -109,93 +200,88 @@
     <div class="flex flex-col items-center justify-center w-full h-full p-4">
         <div id="contentCard" class="glass-card">
             <!-- Profile Picture -->
-            <!-- The 'absolute' positioning with negative 'top' value makes it appear above the card -->
-            <img class="profile-pic w-32 h-32 rounded-full absolute -top-16 border-4 border-white shadow-lg object-cover"
+            <img class="profile-pic w-32 h-32 rounded-full object-cover"
                  src="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png"
                  alt="Mevinu Abeysinghe's Profile Picture">
 
             <!-- Your Name -->
-            <h1 class="name-text text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mt-20 mb-2 drop-shadow-lg">Mevinu Abeysinghe</h1>
+            <h1 class="name-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 drop-shadow-lg">Mevinu Abeysinghe</h1>
 
             <!-- Tagline -->
-            <p class="tagline-text text-white text-lg md:text-xl mb-8 opacity-80">Just a Sri Lankan Teen 🇱🇰</p>
+            <p class="tagline-text text-lg md:text-xl mb-8 opacity-80">Just a Sri Lankan Teen 🇱🇰</p>
 
             <!-- Line of Other Links with Icons -->
             <div class="link-text flex flex-wrap justify-center gap-4 md:gap-6 text-2xl mt-4">
-                <a href="https://github.com/MevinuAbey" target="_blank" title="GitHub" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://github.com/MevinuAbey" target="_blank" title="GitHub" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" title="LinkedIn" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" title="LinkedIn" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://x.com/im_mevi" target="_blank" title="X (Twitter)" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://x.com/im_mevi" target="_blank" title="X (Twitter)" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-x-twitter"></i>
                 </a>
-                <a href="https://instagram.com/mevi_nu07" target="_blank" title="Instagram" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://instagram.com/mevi_nu07" target="_blank" title="Instagram" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://facebook.com/Mevi07" target="_blank" title="Facebook" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://facebook.com/Mevi07" target="_blank" title="Facebook" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.threads.net/@mevi_nu07" target="_blank" title="Threads" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://www.threads.net/@mevi_nu07" target="_blank" title="Threads" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-threads"></i>
                 </a>
-                <a href="https://www.goodreads.com/mevinu" target="_blank" title="Goodreads" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://www.goodreads.com/mevinu" target="_blank" title="Goodreads" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-goodreads-g"></i> <!-- Using goodreads-g as goodreads is not available in free -->
                 </a>
-                <a href="https://www.snapchat.com/add/yourusername" target="_blank" title="Snapchat" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://www.snapchat.com/add/yourusername" target="_blank" title="Snapchat" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-snapchat-ghost"></i>
                 </a>
-                <a href="https://huggingface.co/Mevinu" target="_blank" title="Hugging Face" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://huggingface.co/Mevinu" target="_blank" title="Hugging Face" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fas fa-flask"></i> <!-- Generic icon for Hugging Face -->
                 </a>
-                <a href="https://g.dev/Mevinu" target="_blank" title="Google Developer" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://g.dev/Mevinu" target="_blank" title="Google Developer" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fab fa-google"></i>
                 </a>
-                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" title="Kaggle" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" title="Kaggle" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fas fa-chart-line"></i> <!-- Generic icon for Kaggle -->
                 </a>
-                <a href="mailto:m.mevinuabeysingha@gmail.com" title="Email" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
+                <a href="mailto:m.mevinuabeysingha@gmail.com" title="Email" class="transition duration-300 rounded-full p-2 hover:bg-white/10">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Placeholder for Tawk.to Widget Code --
- <!--Start of Tawk.to Script-->
-   <script type="text/javascript">
-       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-       (function(){
-       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-       s1.async=true;
-       s1.src='https://embed.tawk.to/68725e6f202056191421dbca/1ivvc1puk';
-       s1.charset='UTF-8';
-       s1.setAttribute('crossorigin','*');
-       s0.parentNode.insertBefore(s1,s0);
-       })();
-   </script>
-<!--End of Tawk.to Script-->
-    <!-- Go to tawk.to, sign up, create a property for your website, -->
-    <!-- and paste the generated JavaScript embed code here, just before the closing </body> tag. -->
-    <!-- Example (replace with your actual Tawk.to code): -->
-    <!--
- 
+    <!-- Placeholder for Tawk.to Widget Code -->
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+        s1.src='https://embed.tawk.to/68725e6f202056191421dbca/1ivvc1puk';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
-    -->
-    <!-- End of Tawk.to Widget code -->
+    <!--End of Tawk.to Script-->
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Staggered animation for social icons
+            const socialLinks = document.querySelectorAll('.link-text a');
+            socialLinks.forEach((link, index) => {
+                link.style.animationDelay = `${1.8 + (index * 0.1)}s`; // Start after name/tagline
+            });
+
+            // Correct Font Awesome integrity attribute (if not already fixed)
+            const fontAwesomeLink = document.querySelector('link[href*="font-awesome"]');
+            if (fontAwesomeLink && fontAwesomeLink.getAttribute('xintegrity')) {
+                fontAwesomeLink.setAttribute('integrity', fontAwesomeLink.getAttribute('xintegrity'));
+                fontAwesomeLink.removeAttribute('xintegrity');
+            }
+        });
+    </script>
 </body>
 </html>
-
-
