@@ -333,7 +333,7 @@
         };
 
         // For the Firestore path (artifacts/{appId}/public/data/chats), we'll use the projectId
-        const appId = "mevinuabeyweb"; // Use your Firebase Project ID here
+        const appId = firebaseConfig.projectId; // Use your Firebase Project ID here
 
         // When deploying to GitHub Pages, there's no __initial_auth_token
         const initialAuthToken = null;
