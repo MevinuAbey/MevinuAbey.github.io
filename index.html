@@ -20,11 +20,8 @@
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-y: auto; /* Changed to auto to allow scrolling */
+            height: 100vh; /* Ensure body takes full viewport height */
+            overflow: hidden; /* Prevent body from scrolling */
             position: relative; /* Needed for absolute positioning of elements */
             animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
         }
@@ -43,13 +40,12 @@
             border-radius: 1.5rem;
             padding: 2.5rem; /* Increased padding */
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45); /* More pronounced shadow */
-            position: relative;
+            position: relative; /* For profile pic positioning */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             max-width: 90%;
-            margin-top: 5rem; /* Space for the profile picture to overlap, adjusted by media query */
             min-width: 320px; /* Slightly larger min-width */
             animation: fadeInScale 1s ease-out forwards; /* Card entrance animation */
             opacity: 0; /* Start invisible */
@@ -151,21 +147,38 @@
             to { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
-        /* Top Buttons Container */
+        /* Top Buttons Container (Fixed at top) */
         .top-buttons-container {
-            position: absolute;
+            position: fixed; /* Keep buttons fixed in viewport */
             top: 1rem; /* Default for mobile */
             left: 1rem; /* Default for mobile */
             right: 1rem; /* Default for mobile */
             z-index: 20;
             display: flex;
-            justify-content: space-between; /* Space between items on larger screens */
-            align-items: center; /* Align items vertically in center for horizontal layout */
-            flex-wrap: wrap; /* Allow wrapping */
-            gap: 1rem; /* Gap between buttons */
-            padding: 0; /* No explicit padding on container, let buttons handle it */
-            max-width: calc(100% - 2rem); /* Ensure it doesn't go full width on mobile if small padding is desired */
-            margin: 0 auto; /* Center the container itself */
+            justify-content: space-between; /* Space between items */
+            align-items: center;
+            flex-wrap: nowrap; /* Prevent wrapping on mobile */
+            gap: 0.5rem; /* Reduced gap for tight fit */
+            padding: 0;
+            height: auto; /* Allow height to adjust to content */
+            width: calc(100% - 2rem); /* Ensure full width minus padding */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Main Content Wrapper (Scrollable area) */
+        .main-content-wrapper {
+            position: absolute; /* Position relative to body */
+            top: 4rem; /* Adjusted to start below the fixed buttons */
+            bottom: 0; /* Stretch to bottom of viewport */
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem; /* Overall padding for the scrollable area */
+            overflow-y: auto; /* Make this area scrollable */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            z-index: 5; /* Below buttons, above canvas */
         }
 
         /* Responsive Adjustments */
@@ -174,7 +187,19 @@
                 top: 2rem; /* Larger top margin for desktop */
                 left: 2rem;
                 right: 2rem;
-                max-width: calc(100% - 4rem);
+                width: calc(100% - 4rem); /* Adjust width for desktop padding */
+            }
+            .main-content-wrapper {
+                /* Increased top to ensure profile picture is never cut off on desktop */
+                top: 5.4rem; /* Calculated: ~5.5rem (top bar height) + 4rem (profile pic overlap) + 1.5rem (desired gap) */
+                padding: 5rem;
+            }
+            /* Reset mobile-specific adjustments for desktop */
+            .glass-card {
+                padding-top: 2.5rem; /* Revert to default desktop padding */
+            }
+            .name-text {
+                margin-top: 5rem; /* Revert to default desktop margin */
             }
         }
 
@@ -182,38 +207,43 @@
             /* Adjustments for the main content card */
             .glass-card {
                 padding: 1.5rem;
-                margin-top: 6rem; /* Reduced margin-top for mobile to bring card up */
+                /* Increased top padding to accommodate profile pic and ensure no overlap */
+                padding-top: 6rem; /* Adjusted for mobile to push content down more */
+                margin-top: 0; /* Remove margin-top from card itself, managed by wrapper */
+                margin-bottom: 2rem; /* Add some bottom margin for spacing at end of scroll */
+                flex-shrink: 0; /* Prevent card from shrinking if content is small */
             }
             /* Profile picture adjustments */
             .profile-pic {
                 width: 80px;
                 height: 80px;
-                top: -40px; /* Consistent with w-20 h-20 */
+                top: -40px; /* This positions half of the 80px pic above the card's top edge */
                 border-width: 3px;
             }
             /* Name text adjustments */
             .name-text {
-                font-size: 3rem; /* Smaller font for name on small screens */
-                margin-top: 4.5rem; /* Sufficient margin to clear profile picture */
+                font-size: 2.5rem; /* Slightly smaller font for name on mobile to ensure fit */
+                /* Remove margin-top here, as padding-top on glass-card handles spacing */
+                margin-top: 0.5rem; /* Small margin after profile pic, within card's new padding */
             }
             /* Tagline text adjustments */
             .tagline-text {
-                font-size: 0.8rem; /* Smaller font for tagline */
+                font-size: 0.75rem; /* Slightly smaller font for tagline */
             }
             /* Link icons adjustments */
             .link-text {
-                font-size: 0.9rem; /* Smaller font for links */
+                font-size: 0.8rem; /* Smaller font for links */
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 0.75rem; /* Reduced gap */
+                gap: 0.5rem; /* Reduced gap */
             }
             .link-text a {
-                padding: 0.5rem; /* Smaller padding for icons */
+                padding: 0.4rem 0.6rem; /* Smaller padding for icons */
             }
             /* Glass button adjustments */
             .glass-button {
-                font-size: 0.8rem; /* Even smaller font for mobile to fit */
-                padding: 0.4rem 0.8rem; /* Reduced padding for mobile */
+                font-size: 0.65rem; /* Even smaller font for mobile buttons to fit */
+                padding: 0.25rem 0.5rem; /* Reduced padding for mobile buttons */
             }
             /* Button container on mobile - keep side-by-side */
             .top-buttons-container {
@@ -221,15 +251,21 @@
                 justify-content: space-between; /* Push to corners */
                 align-items: center; /* Keep vertical alignment */
                 padding: 0.5rem; /* Keep existing padding */
-                gap: 0.5rem; /* Reduce gap slightly for horizontal fit */
+                gap: 0.2rem; /* Even smaller gap for tight horizontal fit */
                 top: 0.5rem; /* Closer to top edge on small screens */
                 left: 0.5rem;
                 right: 0.5rem;
-                max-width: calc(100% - 1rem);
+                width: calc(100% - 1rem); /* Full width minus padding */
             }
             .top-buttons-container .glass-button {
                 width: auto; /* Let content dictate width */
                 flex-shrink: 1; /* Allow buttons to shrink */
+            }
+            /* Main content wrapper on mobile */
+            .main-content-wrapper {
+                /* This top value must be greater than the height of the top-buttons-container + its top padding */
+                top: 5rem; /* Adjusted for mobile: 0.5rem (container top) + ~3.5rem (container height) + 1rem (extra gap) = ~5rem */
+                padding: 0.5rem; /* Reduced padding for mobile */
             }
         }
     </style>
@@ -251,8 +287,8 @@
         </a>
     </div>
 
-    <!-- Main container for the content, centered on the page -->
-    <div class="flex flex-col items-center justify-center w-full h-full p-4">
+    <!-- Main Content Wrapper (This div will be scrollable) -->
+    <div class="main-content-wrapper">
         <div id="contentCard" class="glass-card">
             <!-- Profile Picture -->
             <img class="profile-pic w-32 h-32 rounded-full object-cover"
@@ -332,6 +368,7 @@
 
             // Correct Font Awesome integrity attribute (if not already fixed)
             const fontAwesomeLink = document.querySelector('link[href*="font-awesome"]');
+            // This JavaScript block is a fallback. The integrity attribute should be correct in the HTML directly.
             if (fontAwesomeLink && fontAwesomeLink.getAttribute('xintegrity')) {
                 fontAwesomeLink.setAttribute('integrity', fontAwesomeLink.getAttribute('xintegrity'));
                 fontAwesomeLink.removeAttribute('xintegrity');
