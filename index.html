@@ -54,6 +54,7 @@
             animation: fadeInScale 1s ease-out forwards; /* Card entrance animation */
             opacity: 0; /* Start invisible */
             transform: scale(0.95); /* Start slightly smaller */
+            z-index: 10; /* Ensure card is above particles */
         }
 
         /* Keyframes for card entrance */
@@ -70,6 +71,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Soft shadow */
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             color: #e0e0e0; /* Light gray text for buttons */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle glow for button text */
         }
 
         .glass-button:hover {
@@ -90,6 +92,7 @@
             border-width: 4px;
             border-color: #ffffff;
             box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5); /* Inner and outer glow */
+            z-index: 15; /* Ensure profile pic is above card */
         }
 
         @keyframes fadeInBounce {
@@ -110,6 +113,7 @@
 
         .tagline-text {
             color: #e0e0e0;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* Subtle glow for tagline */
             animation: fadeInText 1s ease-out forwards;
             opacity: 0;
             animation-delay: 1.5s; /* Delay after name */
@@ -172,25 +176,28 @@
                 font-size: 0.9rem;
                 padding: 0.6rem 1.2rem;
             }
-            .absolute.top-4.left-4, .absolute.top-4.right-4 {
-                top: 1rem;
-                left: 1rem;
-                right: 1rem;
+            /* Button container on mobile */
+            .top-buttons-container {
+                flex-direction: column; /* Stack buttons vertically */
+                align-items: flex-start; /* Align to left */
+                padding: 1rem; /* Padding around stacked buttons */
+                gap: 0.75rem; /* Space between stacked buttons */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Blog Button in Top Left Corner -->
-    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
+    <!-- Particle Canvas Background -->
+    <canvas id="particleCanvas" class="absolute inset-0 z-0"></canvas>
+
+    <!-- Top Buttons Container (Blog & Projects) -->
+    <div class="top-buttons-container absolute top-4 left-4 right-4 md:top-8 md:left-8 md:right-8 z-20 flex justify-between items-start flex-wrap gap-4">
+        <!-- Blog Button -->
         <a href="blog.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-blog mr-2"></i> View Blog
         </a>
-    </div>
-
-    <!-- Projects Button in Top Right Corner -->
-    <div class="absolute top-4 right-4 md:top-8 md:right-8 z-10">
+        <!-- Projects Button -->
         <a href="projects.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-folder-open mr-2"></i> View Projects
         </a>
@@ -281,6 +288,98 @@
                 fontAwesomeLink.setAttribute('integrity', fontAwesomeLink.getAttribute('xintegrity'));
                 fontAwesomeLink.removeAttribute('xintegrity');
             }
+        });
+
+        // Particle Animation JavaScript
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const numParticles = 100;
+        const particleSize = 1.5;
+        const particleSpeed = 0.5;
+
+        // Resize canvas to fill window
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * particleSize + 0.5;
+                this.speedX = Math.random() * particleSpeed - particleSpeed / 2;
+                this.speedY = Math.random() * particleSpeed - particleSpeed / 2;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`; // Semi-transparent white
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Wrap particles around the screen
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                // Add a slight random drift
+                this.speedX += (Math.random() - 0.5) * 0.01;
+                this.speedY += (Math.random() - 0.5) * 0.01;
+
+                // Keep speed within limits
+                this.speedX = Math.max(Math.min(this.speedX, particleSpeed), -particleSpeed);
+                this.speedY = Math.max(Math.min(this.speedY, particleSpeed), -particleSpeed);
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Initialize particles
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // Animation loop
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw lines between close particles
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) { // Connect if particles are close
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - (distance / 1000)})`; // Fades with distance
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Event listeners for resizing
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
         });
     </script>
 </body>
