@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-y: auto; /* Prevent scrolling */
+            overflow: hidden; /* Prevent scrolling */
             position: relative; /* Needed for absolute positioning of elements */
             animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
         }
@@ -208,23 +208,24 @@
                 padding: 0.5rem; /* Smaller padding for icons */
             }
             .glass-button {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem; /* Even smaller font for mobile to fit */
+                padding: 0.4rem 0.8rem; /* Reduced padding for mobile */
             }
             /* Button container on mobile */
             .top-buttons-container {
-                flex-direction: column; /* Stack buttons vertically */
-                align-items: center; /* Center stacked buttons */
-                padding: 0.5rem; /* Reduced padding for mobile */
-                gap: 0.75rem; /* Space between stacked buttons */
-                top: 0.5rem; /* Closer to top edge on small screens */
+                flex-direction: row; /* Keep them in a row */
+                justify-content: space-between; /* Push to corners */
+                align-items: center; /* Keep vertical alignment */
+                padding: 0.5rem; /* Keep existing padding */
+                gap: 0.5rem; /* Reduce gap slightly for horizontal fit */
+                top: 0.5rem;
                 left: 0.5rem;
                 right: 0.5rem;
-                max-width: calc(100% - 1rem); /* Adjust max-width for smaller padding */
+                max-width: calc(100% - 1rem);
             }
             .top-buttons-container .glass-button {
-                width: 100%; /* Make buttons full width when stacked */
-                justify-content: center; /* Center content within button */
+                /* Remove width: 100% and justify-content: center; as they are no longer stacked */
+                width: auto; /* Let content dictate width */
             }
         }
     </style>
