@@ -13,10 +13,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            /* Always use the background image for the glassmorphic effect */
             background-image: url('https://i.ibb.co/SXG8jd4N/futuristic-city-digital-art-hd-vaporwave.jpg'); /* Your background image */
-            background-size: cover;
-            background-position: center;
+            background-size: 110% 110%; /* Slightly larger to allow for subtle panning */
+            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed; /* Keep background fixed when content moves */
             display: flex;
@@ -25,7 +24,15 @@
             min-height: 100vh;
             padding: 1rem; /* Reduced default padding for smaller screens */
             overflow-y: auto; /* Allow scrolling for project detail page */
+            overflow-x: hidden;
             position: relative; /* Needed for absolute positioning of button relative to body */
+            animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
+        }
+
+        /* Keyframes for background panning */
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         /* Styles for the glassmorphic container for project details */
@@ -45,6 +52,16 @@
             flex-direction: column;
             align-items: center;
             text-align: left; /* Align text left within the container */
+            animation: fadeInScale 1s ease-out forwards; /* Container entrance animation */
+            opacity: 0; /* Start invisible */
+            transform: scale(0.95); /* Start slightly smaller */
+            z-index: 10; /* Ensure container is above particles */
+        }
+
+        /* Keyframes for container entrance */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         /* Specific styling for project content */
@@ -152,6 +169,8 @@
             border: 1px solid rgba(255, 255, 255, 0.25); /* Light border */
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            color: #e0e0e0; /* Light gray text for buttons, added for consistency */
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* Subtle glow */
         }
 
         .glass-button:hover {
@@ -163,16 +182,19 @@
 </head>
 <body>
 
+    <!-- Particle Canvas Background -->
+    <canvas id="particleCanvas" class="absolute inset-0 z-0"></canvas>
+
     <!-- Back to Projects Button in Top Left Corner -->
     <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-        <a href="projects.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
+        <a href="projects.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Projects
         </a>
     </div>
 
     <!-- Main Project Detail Container -->
     <div class="glass-detail-container">
-        <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">[Your Project Title Here]</h1>
+        <h1 id="projectTitle" class="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">[Your Project Title Here]</h1>
 
         <div class="project-links flex flex-wrap justify-center mb-8">
             <a href="https://github.com/yourusername/your-project-repo" target="_blank">
@@ -220,5 +242,110 @@
         </div>
     </div>
 
+    <!-- Particle Animation JavaScript (Copied from your index.html for consistency) -->
+    <script>
+        // Function to get query parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const projectId = getQueryParam('projectId') || 'default-project'; // Get project ID from URL or use a default
+        document.getElementById('projectTitle').textContent = `Project: ${projectId.replace(/-/g, ' ').toUpperCase()}`; // Update title
+
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let numParticles;
+        const particleSize = 1.5;
+        const particleSpeed = 0.5;
+
+        function getParticleCount() {
+            if (window.innerWidth < 640) {
+                return 50;
+            } else if (window.innerWidth < 1024) {
+                return 75;
+            } else {
+                return 100;
+            }
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            numParticles = getParticleCount();
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * particleSize + 0.5;
+                this.speedX = Math.random() * particleSpeed - particleSpeed / 2;
+                this.speedY = Math.random() * particleSpeed - particleSpeed / 2;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                this.speedX += (Math.random() - 0.5) * 0.01;
+                this.speedY += (Math.random() - 0.5) * 0.01;
+
+                this.speedX = Math.max(Math.min(this.speedX, particleSpeed), -particleSpeed);
+                this.speedY = Math.max(Math.min(this.speedY, particleSpeed), -particleSpeed);
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - (distance / 1000)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+        });
+    </script>
 </body>
 </html>
