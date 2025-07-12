@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Prevent scrolling */
+            overflow-y: auto; /* Changed to auto to allow scrolling */
             position: relative; /* Needed for absolute positioning of elements */
             animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
         }
@@ -179,25 +179,28 @@
         }
 
         @media (max-width: 640px) {
+            /* Adjustments for the main content card */
             .glass-card {
                 padding: 1.5rem;
-                /* Adjusted margin-top to account for stacked buttons and provide more space */
-                margin-top: 8rem; /* Increased margin-top for mobile */
+                margin-top: 6rem; /* Reduced margin-top for mobile to bring card up */
             }
+            /* Profile picture adjustments */
             .profile-pic {
                 width: 80px;
                 height: 80px;
-                top: -40px; /* Adjusted for smaller size */
+                top: -40px; /* Consistent with w-20 h-20 */
                 border-width: 3px;
             }
+            /* Name text adjustments */
             .name-text {
                 font-size: 3rem; /* Smaller font for name on small screens */
-                /* Adjusted margin-top to fix overlap with profile picture */
-                margin-top: 4.5rem; /* Increased margin-top for name text on mobile */
+                margin-top: 4.5rem; /* Sufficient margin to clear profile picture */
             }
+            /* Tagline text adjustments */
             .tagline-text {
                 font-size: 0.8rem; /* Smaller font for tagline */
             }
+            /* Link icons adjustments */
             .link-text {
                 font-size: 0.9rem; /* Smaller font for links */
                 flex-wrap: wrap;
@@ -207,25 +210,26 @@
             .link-text a {
                 padding: 0.5rem; /* Smaller padding for icons */
             }
+            /* Glass button adjustments */
             .glass-button {
                 font-size: 0.8rem; /* Even smaller font for mobile to fit */
                 padding: 0.4rem 0.8rem; /* Reduced padding for mobile */
             }
-            /* Button container on mobile */
+            /* Button container on mobile - keep side-by-side */
             .top-buttons-container {
                 flex-direction: row; /* Keep them in a row */
                 justify-content: space-between; /* Push to corners */
                 align-items: center; /* Keep vertical alignment */
                 padding: 0.5rem; /* Keep existing padding */
                 gap: 0.5rem; /* Reduce gap slightly for horizontal fit */
-                top: 0.5rem;
+                top: 0.5rem; /* Closer to top edge on small screens */
                 left: 0.5rem;
                 right: 0.5rem;
                 max-width: calc(100% - 1rem);
             }
             .top-buttons-container .glass-button {
-                /* Remove width: 100% and justify-content: center; as they are no longer stacked */
                 width: auto; /* Let content dictate width */
+                flex-shrink: 1; /* Allow buttons to shrink */
             }
         }
     </style>
