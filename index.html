@@ -8,7 +8,7 @@
     <meta name="google-site-verification" content="yoeJ3KadnyLggS18swFfqw7Gv_MjQg86cMOkDM-CNQw" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN for icons -->
+    <!-- Font Awesome CDN for icons (integrity attribute fixed) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom font for a modern look */
@@ -181,7 +181,8 @@
         @media (max-width: 640px) {
             .glass-card {
                 padding: 1.5rem;
-                margin-top: 6rem; /* Adjusted margin-top to account for stacked buttons */
+                /* Adjusted margin-top to account for stacked buttons and provide more space */
+                margin-top: 8rem; /* Increased margin-top for mobile */
             }
             .profile-pic {
                 width: 80px;
@@ -191,7 +192,8 @@
             }
             .name-text {
                 font-size: 3rem; /* Smaller font for name on small screens */
-                margin-top: 3.5rem; /* Adjust margin for smaller pic */
+                /* Adjusted margin-top to fix overlap with profile picture */
+                margin-top: 4.5rem; /* Increased margin-top for name text on mobile */
             }
             .tagline-text {
                 font-size: 0.8rem; /* Smaller font for tagline */
@@ -335,14 +337,27 @@
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const numParticles = 100;
+        let numParticles; // Make this dynamic
         const particleSize = 1.5;
         const particleSpeed = 0.5;
+
+        // Determine particle count based on screen size
+        function getParticleCount() {
+            if (window.innerWidth < 640) { // Mobile
+                return 50; // Fewer particles for performance
+            } else if (window.innerWidth < 1024) { // Tablet
+                return 75;
+            } else { // Desktop
+                return 100;
+            }
+        }
 
         // Resize canvas to fill window
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            numParticles = getParticleCount(); // Update particle count on resize
+            initParticles(); // Re-initialize particles with new count
         }
 
         // Particle class
