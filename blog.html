@@ -13,54 +13,71 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            /* Updated background image to match home page */
-            background-image: url('https://i.ibb.co/SXG8jd4N/futuristic-city-digital-art-hd-vaporwave.jpg'); /* Your updated background image */
-            background-size: cover;
-            background-position: center;
+            background-image: url('https://i.ibb.co/SXG8jd4N/futuristic-city-digital-art-hd-vaporwave.jpg'); /* Your background image */
+            background-size: 110% 110%; /* Slightly larger to allow for subtle panning */
+            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Allow content to stack vertically */
             align-items: center;
-            min-height: 100vh;
-            padding: 1rem; /* Default padding for mobile */
-            overflow-y: auto; /* Allow scrolling */
-            position: relative; /* Needed for absolute positioning of button */
+            min-height: 100vh; /* Ensure full viewport height */
+            padding: 1rem; /* Default padding for overall page */
+            overflow-y: auto; /* Allow scrolling for blog page content */
+            overflow-x: hidden;
+            position: relative; /* Needed for absolute positioning of buttons */
+            animation: backgroundPan 60s linear infinite alternate; /* Subtle background animation */
         }
 
-        /* Styles for the glassmorphic container for blog content */
+        /* Keyframes for background panning */
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Styles for the glassmorphic container for blog posts */
         .glass-container {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
-            padding: 1.5rem; /* Adjusted padding for container */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            max-width: 1200px;
-            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Glassmorphic blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            border-radius: 1.5rem; /* Rounded corners */
+            padding: 2rem; /* Adjusted padding for container */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Subtle shadow */
+            max-width: 1200px; /* Max width for content */
+            width: 100%; /* Full width up to max-width */
             margin-top: 5rem; /* Space for the back button */
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem; /* Margin at the bottom */
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: fadeInScale 1s ease-out forwards; /* Container entrance animation */
+            opacity: 0; /* Start invisible */
+            transform: scale(0.95); /* Start slightly smaller */
+            z-index: 10; /* Ensure container is above particles */
+        }
+
+        /* Keyframes for container entrance */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         /* Styles for individual blog cards */
         .blog-card {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(0, 0, 0, 0.3); /* Slightly less transparent for distinction */
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 1rem;
-            padding: 1rem; /* Reduced padding for mobile */
-            margin: 0.75rem; /* Reduced margin for mobile */
+            padding: 1.25rem; /* Padding for blog cards */
+            margin: 0.75rem; /* Margin between cards */
             width: calc(100% - 1.5rem); /* Single column on small screens by default */
-            min-width: 280px;
+            min-width: 280px; /* Minimum width for blog cards */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none; /* Remove underline from links */
-            color: inherit; /* Inherit text color */
+            opacity: 0; /* Start invisible for staggered animation */
+            animation: popIn 0.5s ease-out forwards; /* Pop-in animation */
         }
 
         .blog-card:hover {
@@ -73,58 +90,94 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem; /* Gap between blog cards */
+            gap: 1.5rem; /* Gap between blog cards */
         }
 
         /* Styles for the glassmorphic button */
         .glass-button {
-            background-color: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            backdrop-filter: blur(8px); /* Slightly less blur than the card */
+            border: 1px solid rgba(255, 255, 255, 0.25); /* Light border */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            color: #e0e0e0; /* Light gray text for buttons */
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* Subtle glow */
         }
 
         .glass-button:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.25); /* More opaque on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
         }
 
-        /* Search input styling */
-        .search-input {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            color: #fff;
-            width: 80%;
-            max-width: 400px;
+        /* Keyframes for pop-in animation */
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Search bar specific styles */
+        .search-bar-container {
+            width: 100%;
+            max-width: 600px;
             margin-bottom: 2rem;
-            outline: none; /* Remove default outline */
-        }
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .search-input:focus {
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            display: flex;
+            gap: 0.5rem;
         }
 
-        /* Responsive adjustments for larger screens */
+        .search-input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .search-button {
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+
+        /* Media queries for larger screens */
         @media (min-width: 640px) { /* sm breakpoint */
             body {
                 padding: 1.5rem;
             }
             .glass-container {
-                padding: 2rem;
-                margin-top: 6rem;
-                margin-bottom: 2rem;
+                padding: 2.5rem;
+                margin-top: 6rem; /* Adjust for larger button/spacing */
             }
             .blog-card {
                 padding: 1.5rem;
-                margin: 1rem;
-                width: calc(50% - 2rem); /* Two columns on small-medium screens */
+                width: calc(50% - 1.5rem); /* Two columns on small-medium screens, accounting for gap */
             }
             .blog-card h2 {
                 font-size: 1.75rem;
@@ -139,10 +192,10 @@
                 padding: 2rem;
             }
             .glass-container {
-                margin-top: 8rem;
+                margin-top: 8rem; /* Further adjust for larger screens */
             }
             .blog-card {
-                width: calc(33.333% - 2rem); /* Three columns on large screens */
+                width: calc(33.333% - 1.5rem); /* Three columns on large screens, accounting for gap */
             }
             .blog-card h2 {
                 font-size: 2rem;
@@ -155,9 +208,12 @@
 </head>
 <body>
 
+    <!-- Particle Canvas Background -->
+    <canvas id="particleCanvas" class="absolute inset-0 z-0"></canvas>
+
     <!-- Back to Home Button in Top Left Corner -->
     <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-        <a href="index.html" class="glass-button text-black text-base md:text-lg rounded-full px-4 py-2 flex items-center">
+        <a href="index.html" class="glass-button text-base md:text-lg rounded-full px-4 py-2 flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Home
         </a>
     </div>
@@ -167,89 +223,183 @@
         <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-8 drop-shadow-lg">My Blog</h1>
 
         <!-- Search Bar -->
-        <input type="text" id="blogSearch" class="search-input" placeholder="Search blog titles...">
+        <div class="search-bar-container">
+            <input type="text" id="blogSearchInput" class="search-input" placeholder="Search blog posts...">
+            <button id="blogSearchButton" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
 
-        <div id="blogList" class="blog-grid">
-            <!-- Blog posts will be dynamically loaded here by JavaScript -->
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <a href="blog-post-1.html" class="blog-card">
+                <img src="https://placehold.co/300x200/4a5568/ffffff?text=Blog+Post+1" alt="Blog Post Image 1" class="rounded-lg mb-4">
+                <h2 class="text-white font-semibold mb-2">The Future of AI in Web Development</h2>
+                <p class="text-gray-200 text-sm mb-2">Published: July 10, 2024 | Category: AI, Web Dev</p>
+                <p class="text-gray-300">Explore how artificial intelligence is revolutionizing the way we build and interact with web applications...</p>
+                <span class="text-blue-300 hover:text-blue-500 mt-4 inline-block">Read More <i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <!-- Blog Card 2 -->
+            <a href="blog-post-2.html" class="blog-card">
+                <img src="https://placehold.co/300x200/2c5282/ffffff?text=Blog+Post+2" alt="Blog Post Image 2" class="rounded-lg mb-4">
+                <h2 class="text-white font-semibold mb-2">Mastering Glassmorphism with Tailwind CSS</h2>
+                <p class="text-gray-200 text-sm mb-2">Published: June 25, 2024 | Category: CSS, Design</p>
+                <p class="text-gray-300">A deep dive into creating stunning glassmorphic UI elements using only Tailwind CSS utility classes...</p>
+                <span class="text-blue-300 hover:text-blue-500 mt-4 inline-block">Read More <i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <!-- Blog Card 3 -->
+            <a href="blog-post-3.html" class="blog-card">
+                <img src="https://placehold.co/300x200/6b46c1/ffffff?text=Blog+Post+3" alt="Blog Post Image 3" class="rounded-lg mb-4">
+                <h2 class="text-white font-semibold mb-2">My Journey into Competitive Programming</h2>
+                <p class="text-gray-200 text-sm mb-2">Published: June 1, 2024 | Category: Programming, Journey</p>
+                <p class="text-gray-300">Sharing my experiences, challenges, and tips for anyone starting out in competitive programming...</p>
+                <span class="text-blue-300 hover:text-blue-500 mt-4 inline-block">Read More <i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <!-- Blog Card 4 (Example) -->
+            <a href="blog-post-4.html" class="blog-card">
+                <img src="https://placehold.co/300x200/d69e2e/ffffff?text=Blog+Post+4" alt="Blog Post Image 4" class="rounded-lg mb-4">
+                <h2 class="text-white font-semibold mb-2">Understanding Blockchain Beyond Crypto</h2>
+                <p class="text-gray-200 text-sm mb-2">Published: May 15, 2024 | Category: Tech, Blockchain</p>
+                <p class="text-gray-300">Delving into the fundamental concepts of blockchain technology and its diverse applications...</p>
+                <span class="text-blue-300 hover:text-blue-500 mt-4 inline-block">Read More <i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <!-- Add more blog cards here following the same structure -->
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Define your blog posts data
-            // IMPORTANT: Ensure the 'file' path is correct (e.g., 'blogs/my-first-blog-post.html')
-            const blogPosts = [
-                {
-                    title: "My First Blog Post: Getting Started with Web Dev",
-                    date: "2024-07-01", // YYYY-MM-DD format for easy sorting
-                    summary: "A beginner's guide to setting up your first web development environment and writing basic HTML.",
-                    image: "https://placehold.co/150x100/1abc9c/ffffff?text=Web+Dev",
-                    file: "blogs/my-first-blog-post.html"
-                },
-                {
-                    title: "Understanding Glassmorphism in UI Design",
-                    date: "2024-07-10",
-                    summary: "Dive deep into the aesthetic principles and implementation techniques of glassmorphic user interfaces.",
-                    image: "https://placehold.co/150x100/34495e/ffffff?text=Glassmorphism",
-                    file: "blogs/understanding-glassmorphism.html"
-                },
-                {
-                    title: "The Power of Tailwind CSS for Rapid Prototyping",
-                    date: "2024-07-05",
-                    summary: "Exploring how Tailwind CSS can accelerate your front-end development workflow.",
-                    image: "https://placehold.co/150x100/e67e22/ffffff?text=Tailwind+CSS",
-                    file: "blogs/tailwind-css-power.html"
-                },
-                {
-                    title: "A Teen's Journey into AI and Machine Learning",
-                    date: "2024-06-25",
-                    summary: "My initial steps and exciting discoveries in the world of artificial intelligence.",
-                    image: "https://placehold.co/150x100/9b59b6/ffffff?text=AI+Journey",
-                    file: "blogs/teen-ai-journey.html"
-                }
-                // Add more blog posts here
-            ];
+            // Staggered animation for blog cards
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.5 + (index * 0.1)}s`; // Staggered delay for each card
+            });
 
-            const blogListContainer = document.getElementById('blogList');
-            const blogSearchInput = document.getElementById('blogSearch');
+            // Search functionality
+            const searchInput = document.getElementById('blogSearchInput');
+            const blogGrid = document.querySelector('.blog-grid'); // Get the grid container
+            const allBlogCards = blogGrid.querySelectorAll('.blog-card'); // Get all blog cards
 
-            // Function to render blog posts
-            function renderBlogPosts(postsToRender) {
-                blogListContainer.innerHTML = ''; // Clear existing posts
+            // Function to filter blog posts
+            function filterBlogPosts() {
+                const searchTerm = searchInput.value.toLowerCase();
 
-                // Sort posts by date in descending order (newest first)
-                postsToRender.sort((a, b) => new Date(b.date) - new Date(a.date));
+                allBlogCards.forEach(card => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    const content = card.querySelector('p:last-of-type').textContent.toLowerCase(); // Get the main content paragraph
 
-                if (postsToRender.length === 0) {
-                    blogListContainer.innerHTML = '<p class="text-white text-lg mt-4">No blog posts found matching your search.</p>';
-                    return;
-                }
-
-                postsToRender.forEach(post => {
-                    const blogCard = document.createElement('a');
-                    blogCard.href = post.file;
-                    blogCard.classList.add('blog-card');
-                    blogCard.innerHTML = `
-                        <img src="${post.image}" alt="${post.title}" class="rounded-lg mb-4 w-full h-24 object-cover">
-                        <h2 class="text-white font-semibold mb-2">${post.title}</h2>
-                        <p class="text-gray-300 text-sm mb-2">${post.summary}</p>
-                        <p class="text-gray-400 text-xs">Published: ${post.date}</p>
-                    `;
-                    blogListContainer.appendChild(blogCard);
+                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                        card.style.display = 'flex'; // Show the card
+                    } else {
+                        card.style.display = 'none'; // Hide the card
+                    }
                 });
             }
 
-            // Initial render of all blog posts
-            renderBlogPosts(blogPosts);
+            // Listen for input changes in the search field
+            searchInput.addEventListener('input', filterBlogPosts);
 
-            // Search functionality
-            blogSearchInput.addEventListener('keyup', function() {
-                const searchTerm = blogSearchInput.value.toLowerCase();
-                const filteredPosts = blogPosts.filter(post =>
-                    post.title.toLowerCase().includes(searchTerm)
-                );
-                renderBlogPosts(filteredPosts);
-            });
+            // Listen for click on the search button (optional, as input event handles most cases)
+            document.getElementById('blogSearchButton').addEventListener('click', filterBlogPosts);
+        });
+
+        // Particle Animation JavaScript (Copied from your index.html for consistency)
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let numParticles;
+        const particleSize = 1.5;
+        const particleSpeed = 0.5;
+
+        function getParticleCount() {
+            if (window.innerWidth < 640) {
+                return 50;
+            } else if (window.innerWidth < 1024) {
+                return 75;
+            } else {
+                return 100;
+            }
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            numParticles = getParticleCount();
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * particleSize + 0.5;
+                this.speedX = Math.random() * particleSpeed - particleSpeed / 2;
+                this.speedY = Math.random() * particleSpeed - particleSpeed / 2;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                this.speedX += (Math.random() - 0.5) * 0.01;
+                this.speedY += (Math.random() - 0.5) * 0.01;
+
+                this.speedX = Math.max(Math.min(this.speedX, particleSpeed), -particleSpeed);
+                this.speedY = Math.max(Math.min(this.speedY, particleSpeed), -particleSpeed);
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - (distance / 1000)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
         });
     </script>
 </body>
