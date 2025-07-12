@@ -321,10 +321,23 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables for Firebase config and app ID
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // Global variables for Firebase config and app 
+        const firebaseConfig = {
+          apiKey: "AIzaSyBiq4ZjsRxUDz1EO4G-yx10yiutezq5Hmg",
+          authDomain: "mevinuabeyweb.firebaseapp.com",
+          projectId: "mevinuabeyweb",
+          storageBucket: "mevinuabeyweb.firebasestorage.app",
+          messagingSenderId: "231962914694",
+          appId: "1:231962914694:web:47f7b4d040a4c0c79bc607",
+          measurementId: "G-5YK7XJ2QQW"
+        };
+
+        // For the Firestore path (artifacts/{appId}/public/data/chats), we'll use the projectId
+        const appId = "mevinuabeyweb"; // Use your Firebase Project ID here
+
+        // When deploying to GitHub Pages, there's no __initial_auth_token
+        const initialAuthToken = null;
+        // --- END: Firebase Configuration for GitHub Pages ---
 
         let db;
         let auth;
