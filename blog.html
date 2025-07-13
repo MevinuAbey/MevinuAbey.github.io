@@ -177,7 +177,8 @@
                 margin-top: 8rem; /* Further adjust for larger screens */
             }
             .blog-card {
-                width: calc(33.333% - 1.5rem); /* Three columns on large screens, accounting for gap */
+                /* Changed to 4 columns: 25% width minus the calculated gap for 4 items */
+                width: calc(25% - 1.125rem); /* Four columns on large screens, accounting for gap */
             }
             .blog-card h2 {
                 font-size: 2rem;
@@ -283,8 +284,8 @@
             // Listen for input changes in the search field
             searchInput.addEventListener('input', filterBlogPosts);
 
-            // Listen for click on the search button (optional, as input event handles most cases)
-            document.getElementById('blogSearchButton').addEventListener('click', filterBlogPosts);
+            // Removed the search button click listener as input handles real-time filtering
+            // document.getElementById('blogSearchButton').addEventListener('click', filterBlogPosts);
         });
 
         // Particle Animation JavaScript (Copied from your index.html for consistency)
