@@ -1,104 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mevinu Abeysinghe — Portfolio</title>
-  <meta name="description" content="Mevinu Abeysinghe — developer & creator. Portfolio, projects, and writing." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mevinu's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Topbar -->
-  <header class="topbar glass blur">
-    <a class="brand" href="/">Mevinu</a>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#featured-projects">Projects</a>
-      <a href="#featured-blog">Blog</a>
-      <a href="#contact">Contact</a>
-      <a class="btn small" href="/projects/">All Projects</a>
-      <a class="btn small alt" href="/blog/">Blog</a>
+    <nav class="top-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mevinu</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
     </nav>
-    <button class="burger" aria-label="Open menu">☰</button>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero section reveal">
-    <div class="hero-inner">
-      <p class="eyebrow">Hi, I'm</p>
-      <h1>Mevinu Abeysinghe</h1>
-      <p class="tagline">Multidisciplinary developer & lifelong learner from Sri Lanka.
-        Building useful things across web, mobile, and ML.</p>
-      <div class="cta-row">
-        <a class="btn" href="#featured-projects">See my work</a>
-        <a class="btn alt" href="#contact">Get in touch</a>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/MevinuAbey" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank">LinkedIn</a>
-        <a href="https://huggingface.co/Mevinu" target="_blank">HuggingFace</a>
-        <a href="https://g.dev/Mevinu" target="_blank">g.dev</a>
-        <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank">Kaggle</a>
-        <a href="https://x.com/im_mevi" target="_blank">X</a>
-        <a href="https://instagram.com/mevi_nu07" target="_blank">Instagram</a>
-        <a href="https://facebook.com/Mevi07" target="_blank">Facebook</a>
-        <a href="https://www.threads.net/@mevi_nu07" target="_blank">Threads</a>
-        <a href="https://www.goodreads.com/mevinu" target="_blank">Goodreads</a>
-      </div>
-    </div>
-  </section>
+    <header>
+        <h1>Hi, I'm Mevinu</h1>
+        <p>Multidisciplinary digital designer & developer based in [Your Location]. 2025</p>
+        <a href="mailto:your.email@example.com" class="contact">Get in touch</a>
+    </header>
 
-  <!-- About -->
-  <section id="about" class="section narrow reveal">
-    <h2 class="section-title">What do I do?</h2>
-    <div class="services">
-      <div class="card glass">
-        <h3>Web Apps</h3>
-        <p>Full-stack apps with Node.js, PostgreSQL, and Flutter for web/mobile.</p>
-      </div>
-      <div class="card glass">
-        <h3>UI / UX</h3>
-        <p>Clean, accessible interfaces with motion and micro-interactions.</p>
-      </div>
-      <div class="card glass">
-        <h3>Data & ML</h3>
-        <p>Beginner-friendly ML projects (Kaggle, HuggingFace) and analytics.</p>
-      </div>
-    </div>
-  </section>
+    <section id="what-i-do">
+        <h2>What do I do?</h2>
+        <p>I help existing teams by providing extra muscle where they need it. With [X] years in the industry, I've done a bit of everything and a heap of some things.</p>
+        <ul class="services">
+            <li>Branding</li>
+            <li>UI / UX</li>
+            <li>Design prototyping</li>
+            <li>Web / App design</li>
+            <li>3D Modeling / Animation</li>
+            <li>Web3 endeavors</li>
+        </ul>
+    </section>
 
-  <!-- Featured Projects -->
-  <section id="featured-projects" class="section reveal">
-    <div class="section-head">
-      <h2 class="section-title">Latest Projects</h2>
-      <a class="link" href="/projects/">View all →</a>
-    </div>
-    <div id="projects-grid" class="grid"></div>
-  </section>
+    <section id="product-design">
+        <h2>Product Design</h2>
+        <p>User friendly software and application design. I help with ideation, prototyping, user interface and front end development.</p>
+        <p>If you have an idea, I can help to flesh it out and create a prototype for investment or testing. I support backend development teams by providing style guides, front end development assistance, clickable prototypes and more.</p>
+        <!-- Add <img src="images/product-design.jpg" alt="Product Design" class="section-image"> if you have an image -->
+    </section>
 
-  <!-- Featured Blog -->
-  <section id="featured-blog" class="section reveal">
-    <div class="section-head">
-      <h2 class="section-title">Latest from the Blog</h2>
-      <a class="link" href="/blog/">Read more →</a>
-    </div>
-    <div id="blog-grid" class="grid"></div>
-  </section>
+    <section id="websites">
+        <h2>Websites</h2>
+        <p>A good website is like a main hub for your brand.</p>
+        <p>Often its one of the first steps a customer takes to know more about your organization or products.</p>
+        <p>Over the last [X] years I've designed and helped develop a tonne of websites. I make simple to use, memorable and intuitive interfaces to help your users get where they need to go.</p>
+        <!-- Add <img src="images/web-design.jpg" alt="Web Design" class="section-image"> if you have an image -->
+    </section>
 
-  <!-- Contact CTA -->
-  <section id="contact" class="section cta reveal">
-    <h2>Got a project?</h2>
-    <p>Let’s make something great together.</p>
-    <a class="btn" href="mailto:you@email.com">Get in touch</a>
-  </section>
+    <section id="branding">
+        <h2>Branding</h2>
+        <p>Making people fall in love with your brand is not an easy thing. But I do love a challenge.</p>
+        <p>I can help with ideation and concepting, right through to branding collateral and vehicle signage.</p>
+        <!-- Add <img src="images/branding.jpg" alt="Branding" class="section-image"> if you have an image -->
+    </section>
 
-  <footer class="foot">
-    <p>© 2025 Mevinu Abeysinghe • Built for GitHub Pages</p>
-  </footer>
+    <section id="3d-cgi">
+        <h2>3D / CGI Stuff</h2>
+        <p>Who doesn't like a pretty picture?</p>
+        <p>During [time period] I thought it was a good time to learn 3D to expand my repertoire, so I started utilising Unreal Engine for cinematic rendering and Blender for modelling and sculpting. I use 3D for short films, and general modelling and rendering for various projects.</p>
+        <!-- Add <img src="images/3d.jpg" alt="3D" class="section-image"> if you have an image -->
+    </section>
 
-  <script src="/assets/main.js" defer></script>
+    <section id="latest-artwork">
+        <h3>Latest Artwork</h3>
+        <div class="artwork-grid">
+            <div class="artwork-item">
+                <h4>The Arrival</h4>
+                <p>3D</p>
+                <!-- Add image if available -->
+            </div>
+            <div class="artwork-item">
+                <h4>Jetplane</h4>
+                <p>3D, web3</p>
+            </div>
+            <div class="artwork-item">
+                <h4>The Cave</h4>
+                <p>3D, NFT</p>
+            </div>
+            <!-- Add more as needed -->
+            <div class="artwork-item">
+                <h4>"Guiding Star" [Location] Christmas</h4>
+                <p>3D</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Desert Sands</h4>
+                <p>3D - Dynamic Wallpaper</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Dune Vs Mando</h4>
+                <p>3D</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Summer of Love</h4>
+                <p>Vector, Illustration</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Webfox</h4>
+                <p>3D, Web</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Hidden Valley House</h4>
+                <p>NFT, 3D, Web</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Eternity</h4>
+                <p>NFT, 3D</p>
+            </div>
+            <div class="artwork-item">
+                <h4>The Nomad</h4>
+                <p>NFT, Vector, After Effects</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Dark Magician</h4>
+                <p>3D</p>
+            </div>
+            <div class="artwork-item">
+                <h4>The Cave (Slumber Interactive)</h4>
+                <p>Vector, Illustration, Web</p>
+            </div>
+            <div class="artwork-item">
+                <h4>The Valley</h4>
+                <p>Vector, Illustration</p>
+            </div>
+            <div class="artwork-item">
+                <h4>Tropical Sunrise</h4>
+                <p>Vector, Illustration</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="codepen">
+        <h3>Codepen Experiments</h3>
+        <p>I like to push the limits of HTML and CSS. Check out some of my experiments on codepen.</p>
+        <a href="https://codepen.io/yourusername" target="_blank" class="link-button">Codepen</a>
+    </section>
+
+    <section id="links">
+        <h2>My Links</h2>
+        <div class="links-container">
+            <div class="link-category">
+                <h3>Professional</h3>
+                <ul>
+                    <li><a href="https://github.com/MevinuAbey" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://huggingface.co/Mevinu" target="_blank">Hugging Face</a></li>
+                    <li><a href="https://g.dev/Mevinu" target="_blank">Google Developers</a></li>
+                    <li><a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank">Kaggle</a></li>
+                </ul>
+            </div>
+            <div class="link-category">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/im_mevi" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://instagram.com/mevi_nu07" target="_blank">Instagram</a></li>
+                    <li><a href="https://facebook.com/Mevi07" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.threads.net/@mevi_nu07" target="_blank">Threads</a></li>
+                </ul>
+            </div>
+            <div class="link-category">
+                <h3>Other</h3>
+                <ul>
+                    <li><a href="https://www.goodreads.com/mevinu" target="_blank">Goodreads</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mevinu. All rights reserved.</p>
+    </footer>
 </body>
 </html>
