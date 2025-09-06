@@ -1,414 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHR8E3F63N"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-ZHR8E3F63N');
-    </script>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Optimized Title -->
-    <title>Mevinu Abeysinghe | Personal Portfolio & Blog</title>
-    
-    <!-- Meta Description -->
-    <meta name="description" content="Welcome to the personal portfolio of Mevinu Abeysinghe. Explore my projects, read my blog, and connect with me on various social platforms. I'm a passionate developer and student from Sri Lanka.">
-    
-    <!-- Meta Keywords -->
-    <meta name="keywords" content="Mevinu Abeysinghe, Mevinu Thewjaya, Mevinu, Thewjaya, abeysinghe, personal portfolio, blog, web developer, Sri Lanka, projects, tech, software development ">
-    
-    <!-- Author -->
-    <meta name="author" content="Mevinu Abeysinghe">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://mevinuabey.github.io" /> <!-- Replace with your actual domain -->
-
-    <!-- Open Graph Meta Tags (for social sharing) -->
-    <meta property="og:title" content="Mevinu Abeysinghe | Personal Portfolio & Blog" />
-    <meta property="og:description" content="Hi! I'm Mevinu. Explore my work and thoughts." />
-    <meta property="og:image" content="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png" />
-    <meta property="og:url" content="https://mevinuabey.github.io" /> <!-- Replace with your actual domain -->
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mevinu Abeysinghe | Personal Portfolio & Blog">
-    <meta name="twitter:description" content="A passionate developer from Sri Lanka. Check out my portfolio, blog, and projects.">
-    <meta name="twitter:image" content="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png">
-    <meta name="twitter:creator" content="@im_mevi">
-
-    <!-- Google Site Verification Tag -->
-    <meta name="google-site-verification" content="yoeJ3KadnyLggS18swFfqw7Gv_MjQg86cMOkDM-CNQw" />
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome CDN for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mevinu Abeysinghe",
-      "url": "https://mevinuabey.github.io",
-      "image": "https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png",
-      "sameAs": [
-        "https://github.com/MevinuAbey",
-        "https://www.linkedin.com/in/mevinuabeysinghe",
-        "https://x.com/im_mevi",
-        "https://instagram.com/mevi_nu07",
-        "https://facebook.com/Mevi07",
-        "https://www.threads.net/@mevi_nu07",
-        "https://www.goodreads.com/mevinu",
-        "https://huggingface.co/Mevinu",
-        "https://g.dev/Mevinu",
-        "https://www.kaggle.com/mevinuabeysinghe"
-      ],
-      "jobTitle": "Student", 
-      "nationality": "Sri Lankan",
-      "worksFor": {
-        "@type": "School",
-        "name": "Mahinda Rajpaksha College" 
-      },
-       "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https://mevinuabey.github.io" 
-       }
-    }
-    </script>
-
-    <style>
-        /* Custom font for a modern look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-image: url('https://i.ibb.co/SXG8jd4N/futuristic-city-digital-art-hd-vaporwave.jpg');
-            background-size: 110% 110%;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-            position: relative;
-            animation: backgroundPan 60s linear infinite alternate;
-        }
-        @keyframes backgroundPan {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-        .glass-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 90%;
-            margin-top: 4rem;
-            min-width: 300px;
-            animation: fadeInScale 1s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.95);
-            z-index: 10;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.55);
-        }
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .glass-button {
-            background-color: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            color: #e0e0e0;
-            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-        }
-        .glass-button:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-        .profile-pic {
-            animation: fadeInBounce 1.2s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
-            animation-delay: 0.5s;
-            position: absolute;
-            top: -64px;
-            border-width: 4px;
-            border-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 15;
-        }
-        @keyframes fadeInBounce {
-            0% { opacity: 0; transform: translateY(30px) scale(0.8); }
-            60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .name-text {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-            animation: fadeInText 1s ease-out forwards;
-            opacity: 0;
-            animation-delay: 1.2s;
-            margin-top: 5rem;
-        }
-        .tagline-text {
-            color: #e0e0e0;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
-            animation: fadeInText 1s ease-out forwards;
-            opacity: 0;
-            animation-delay: 1.5s;
-        }
-        @keyframes fadeInText {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .link-text a {
-            opacity: 0;
-            animation: popIn 0.5s ease-out forwards;
-            color: #a0d9ff;
-            text-shadow: 0 0 5px rgba(160, 217, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.25);
-        }
-        .link-text a:hover {
-            transform: scale(1.2) rotateZ(3deg);
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 20px rgba(160, 217, 255, 0.6),
-                        0 0 40px rgba(160, 217, 255, 0.4);
-            filter: brightness(1.2) saturate(1.2);
-        }
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.5) rotate(-30deg); }
-            to { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-        @media (max-width: 640px) {
-            .glass-card {
-                padding: 1.5rem;
-                margin-top: 3rem;
-            }
-            .profile-pic {
-                width: 80px;
-                height: 80px;
-                top: -40px;
-                border-width: 3px;
-            }
-            .tagline-text {
-                font-size: 0.8rem;
-            }
-            .link-text {
-                font-size: 0.9rem;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mevinu Abeysinghe — Portfolio</title>
+<meta name="description" content="Mevinu Abeysinghe — developer & creator. Portfolio, projects, and writing." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css" />
 </head>
 <body>
+<!-- Topbar -->
+<header class="topbar glass blur">
+<a class="brand" href="/">Mevinu</a>
+<nav class="nav">
+<a href="#about">About</a>
+<a href="#featured-projects">Projects</a>
+<a href="#featured-blog">Blog</a>
+<a href="#contact">Contact</a>
+<a class="btn small" href="/projects/">All Projects</a>
+<a class="btn small alt" href="/blog/">Blog</a>
+</nav>
+<button class="burger" aria-label="Open menu">☰</button>
+</header>
 
-    <canvas id="particleCanvas" class="absolute inset-0 z-0"></canvas>
 
-    <!-- Blog Button in Top Left Corner -->
-    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-        <a href="blog.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
-            <i class="fas fa-blog mr-2"></i> View Blog
-        </a>
-    </div>
+<!-- Hero -->
+<section class="hero section reveal">
+<div class="hero-inner">
+<p class="eyebrow">Hi, I'm</p>
+<h1>Mevinu Abeysinghe</h1>
+<p class="tagline">Multidisciplinary developer & lifelong learner from Sri Lanka.
+Building useful things across web, mobile, and ML.</p>
+<div class="cta-row">
+<a class="btn" href="#featured-projects">See my work</a>
+<a class="btn alt" href="#contact">Get in touch</a>
+</div>
+<div class="socials">
+<a href="https://github.com/MevinuAbey" target="_blank" rel="noopener">GitHub</a>
+<a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" rel="noopener">LinkedIn</a>
+<a href="https://huggingface.co/Mevinu" target="_blank" rel="noopener">HuggingFace</a>
+<a href="https://g.dev/Mevinu" target="_blank" rel="noopener">g.dev</a>
+<a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" rel="noopener">Kaggle</a>
+<a href="https://x.com/im_mevi" target="_blank" rel="noopener">X</a>
+<a href="https://instagram.com/mevi_nu07" target="_blank" rel="noopener">Instagram</a>
+<a href="https://facebook.com/Mevi07" target="_blank" rel="noopener">Facebook</a>
+<a href="https://www.threads.net/@mevi_nu07" target="_blank" rel="noopener">Threads</a>
+<a href="https://www.goodreads.com/mevinu" target="_blank" rel="noopener">Goodreads</a>
+</div>
+</div>
+</section>
 
-    <!-- Projects Button in Top Right Corner -->
-    <div class="absolute top-4 right-4 md:top-8 md:right-8 z-10">
-        <a href="projects.html" class="glass-button text-white text-base md:text-lg rounded-full px-4 py-2 flex items-center">
-            <i class="fas fa-folder-open mr-2"></i> View Projects
-        </a>
-    </div>
 
-    <main class="flex flex-col items-center justify-center w-full h-full p-4">
-        <article id="contentCard" class="glass-card">
-            <!-- Profile Picture -->
-            <img class="profile-pic w-32 h-32 rounded-full absolute -top-16 border-4 border-white shadow-lg object-cover"
-                 src="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png"
-                 alt="A profile picture of Mevinu Abeysinghe.">
-            
-            <header>
-                <h1 class="name-text text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mt-20 mb-2 drop-shadow-lg">Mevinu Abeysinghe</h1>
-                <p class="tagline-text text-white text-lg md:text-xl mb-8 opacity-80">Just a Sri Lankan Boy 🇱🇰</p>
-            </header>
-            
-            <nav class="link-text flex flex-wrap justify-center gap-4 md:gap-6 text-2xl mt-4" aria-label="Social Media Links">
-                <a href="https://github.com/MevinuAbey" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on GitHub" title="GitHub" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on LinkedIn" title="LinkedIn" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a href="https://x.com/im_mevi" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on X (formerly Twitter)" title="X (Twitter)" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-x-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="https://instagram.com/mevi_nu07" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Instagram" title="Instagram" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="https://facebook.com/Mevi07" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Facebook" title="Facebook" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.threads.net/@mevi_nu07" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Threads" title="Threads" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-threads" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.goodreads.com/mevinu" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Goodreads" title="Goodreads" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-goodreads-g" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.snapchat.com/add/mevinuthewjaya" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Snapchat" title="Snapchat" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-snapchat-ghost" aria-hidden="true"></i>
-                </a>
-                <a href="https://huggingface.co/Mevinu" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Hugging Face" title="Hugging Face" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fas fa-flask" aria-hidden="true"></i>
-                </a>
-                <a href="https://g.dev/Mevinu" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Google Developer" title="Google Developer" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fab fa-google" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" rel="noopener noreferrer" aria-label="Mevinu Abeysinghe on Kaggle" title="Kaggle" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fas fa-chart-line" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:m.mevinuabeysingha@gmail.com" aria-label="Email Mevinu Abeysinghe" title="Email" class="text-blue-200 hover:text-blue-400 transition duration-300 rounded-full p-2 hover:bg-white/10">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                </a>
-            </nav>
-        </article>
-    </main>
-
-    <!-- Tawk.to Widget Code -->
-    <script type="text/javascript">
-       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-       (function(){
-       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-       s1.async=true;
-       s1.src='https://embed.tawk.to/68725e6f202056191421dbca/1ivvc1puk';
-       s1.charset='UTF-8';
-       s1.setAttribute('crossorigin','*');
-       s0.parentNode.insertBefore(s1,s0);
-       })();
-   </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const socialLinks = document.querySelectorAll('.link-text a');
-            socialLinks.forEach((link, index) => {
-                link.style.animationDelay = `${1.8 + (index * 0.1)}s`;
-            });
-        });
-
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let numParticles;
-        const particleSize = 1.5;
-        const particleSpeed = 0.5;
-
-        function getParticleCount() {
-            if (window.innerWidth < 640) { return 50; }
-            else if (window.innerWidth < 1024) { return 75; }
-            else { return 100; }
-        }
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            numParticles = getParticleCount();
-            initParticles();
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * particleSize + 0.5;
-                this.speedX = Math.random() * particleSpeed - particleSpeed / 2;
-                this.speedY = Math.random() * particleSpeed - particleSpeed / 2;
-                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-                this.speedX += (Math.random() - 0.5) * 0.01;
-                this.speedY += (Math.random() - 0.5) * 0.01;
-                this.speedX = Math.max(Math.min(this.speedX, particleSpeed), -particleSpeed);
-                this.speedY = Math.max(Math.min(this.speedY, particleSpeed), -particleSpeed);
-            }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < numParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - (distance / 1000)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        window.addEventListener('load', () => {
-            resizeCanvas();
-            initParticles();
-            animateParticles();
-        });
-    </script>
-</body>
+<!-- About -->
+<section id="about" class="section narrow reveal">
+<h2 class="section-title">What do I do?</h2>
+<div class="services">
+<div class="card glass">
+<h3>Web Apps</h3>
+<p>Full‑stack apps with Node.js, PostgreSQL, and Flutter for web/mobile.</p>
+</div>
+<div class="card glass">
+<h3>UI / UX</h3>
+<p>Clean, accessible interfaces with motion and micro‑interactions.</p>
+</div>
 </html>
