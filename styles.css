@@ -423,8 +423,9 @@ section:hover .section-title::after {
     padding: 12px 35px;
     font-size: 1.1rem;
     font-weight: 600;
-    background: var(--button-bg);
-    color: #fff;
+    background: #C7D4A2;
+    color: #3E5429;
+    box-shadow: #8BC34A;
     border-radius: 30px;
     text-decoration: none;
     display: inline-block;
@@ -432,7 +433,7 @@ section:hover .section-title::after {
 }
 
 .link-button:hover, .link-button:focus {
-    background: var(--button-hover);
+    background: #F5E9BE;
     transform: translateY(-5px);
     box-shadow: 0 5px 15px var(--shadow-color);
 }
