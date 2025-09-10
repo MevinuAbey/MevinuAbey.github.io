@@ -1,7 +1,7 @@
 /* styles.css */
 
 :root {
-    --bg-color: transparent;
+    --bg-color: rgba(0, 0, 0, 1);
     --text-color: #ffffff;
     --header-bg: transparent;
     --section-bg: rgba(0, 0, 0, 0);
