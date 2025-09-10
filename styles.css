@@ -107,7 +107,7 @@ body {
 
 
 .top-bar.scrolled {
-    background: linear-gradient(to bottom, rgba(6, 11, 6, 0.4), rgba(6, 11, 6, 0.4));
+    background: linear-gradient(to bottom, rgba(6, 11, 6, 0.4), rgba(6, 11, 6, 0.25));
     backdrop-filter: blur(12px);
     box-shadow: 0 2px 8px var(--shadow-color);
 	border-bottom: 1px solid var(--glow-color);
