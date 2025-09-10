@@ -129,7 +129,7 @@ body {
 }
 
 .logo-text {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-color);
 }
@@ -569,6 +569,10 @@ footer {
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
+	.logo-text {
+        font-size: 1.2rem;
+    }
+
     .nav-links.active {
         display: flex;
         opacity: 1;
@@ -674,7 +678,7 @@ footer {
     }
 
     .logo-text {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
     }
 
     .logo-subtext {
