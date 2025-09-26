@@ -1,0 +1,7 @@
+title: "Blog Of Mevi"
+description: "A sleek modern Jekyll blog with glassmorphism."
+baseurl: "" # leave empty if deploying at username.github.io
+url: "https://mevinuabey.github.io"
+
+theme: null
+markdown: kramdown
