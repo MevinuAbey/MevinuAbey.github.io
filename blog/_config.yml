@@ -4,5 +4,5 @@ baseurl: "/blog"   # your repo name (or subfolder)
 url: "https://mevinuabey.github.io"   # replace with your GitHub Pages URL
 
 
-theme: null
+theme: chirpy
 markdown: kramdown
