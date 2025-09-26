@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 </head>
 <body>
   <header class="navbar">
-    <div class="container">
+    <div class="nav-container">
       <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
       <nav>
         <a href="{{ site.baseurl }}/">Home</a>
@@ -17,7 +17,7 @@
     </div>
   </header>
 
-  <main class="content">
+  <main>
     {{ content }}
   </main>
 
