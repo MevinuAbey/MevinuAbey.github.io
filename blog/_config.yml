@@ -1,7 +1,8 @@
 title: "My Modern Blog"
 description: "A sleek modern Jekyll blog with glassmorphism."
-baseurl: ""
-url: "https://mevinuabey.github.io"
+baseurl: "/blog"   # your repo name (or subfolder)
+url: "https://mevinuabey.github.io"   # replace with your GitHub Pages URL
+
 
 theme: null
 markdown: kramdown
