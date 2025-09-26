@@ -1,1 +1,63 @@
-<rssapp-list id="BXnJvvszNF3pWgus"></rssapp-list><script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RSS Feed</title>
+
+  <!-- Small styling to center widget and make it responsive -->
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --text:#e6eef8;
+      --accent:#ffcc00;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:2.5rem 1rem;
+      box-sizing:border-box;
+    }
+    .widget-shell{
+      width:100%;
+      max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:1rem;
+      box-shadow:0 8px 30px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    }
+    /* Improve spacing inside the rssapp widget (if allowed by their CSS) */
+    .rssapp-list {
+      --rssapp-gap: 1rem;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width:640px){
+      .wrap{padding:1.25rem}
+      .widget-shell{padding:.75rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="widget-shell" aria-live="polite">
+      <!-- RSS.app widget you provided -->
+      <rssapp-list id="BXnJvvszNF3pWgus"></rssapp-list>
+      <script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+
+      <!-- Fallback for users with JavaScript disabled -->
+      <noscript>
+        <div style="padding:.75rem;background:#071022;border-radius:8px;color:#cbd5e1">
+          This feed requires JavaScript. Please enable JS to view the latest posts, or visit the original feed provider.
+        </div>
+      </noscript>
+    </div>
+  </div>
+</body>
+</html>
