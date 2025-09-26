@@ -1,0 +1,7 @@
+title: "My Modern Blog"
+description: "A sleek modern Jekyll blog with glassmorphism."
+baseurl: ""
+url: "https://yourusername.github.io"
+
+theme: null
+markdown: kramdown
