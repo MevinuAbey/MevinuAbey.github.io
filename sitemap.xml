@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-      <loc>https://MevinuAbey.github.io/</loc>
-      <lastmod>2025-07-11</lastmod> <!-- Update with the last modification date -->
+      <loc>https://mevinuabey.github.io/</loc>
+      <lastmod>2025-09-27</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://mevinuabey.github.io/blog/index.html</loc>
+      <lastmod>2025-09-26</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://mevinuabey.github.io/projects/index.html</loc>
+      <lastmod>2025-09-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
    </url>
 </urlset>
