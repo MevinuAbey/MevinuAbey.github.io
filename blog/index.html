@@ -20,17 +20,40 @@
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, sans-serif;
-      background: var(--bg-gradient);
+      /* REMOVED: background: var(--bg-gradient); - The video will be the background */
       color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding: 2rem 1rem;
+      /* ADDED: Position body content over the video */
+      position: relative;
+      /* Ensure text is above the video */
+      z-index: 1;
+      /* Add a slight dark overlay to improve text readability over the video */
+      background-color: rgba(0, 0, 0, 0.5); /* Fallback/overlay */
     }
+    /* --- Background Video Styling --- */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      /* Use object-fit: cover to ensure the video covers the whole screen */
+      object-fit: cover;
+      /* Move behind all other content */
+      z-index: -1;
+      /* Blur the video slightly for better readability and a less distracting background */
+      filter: blur(5px) brightness(0.7);
+    }
+    /* --- Container and Header adjustments for Z-index --- */
     .container {
       width: 100%;
       max-width: 1100px;
+      /* Ensure container content is clearly visible */
+      z-index: 2;
     }
     header {
       display: flex;
@@ -211,6 +234,12 @@
   </style>
 </head>
 <body>
+  <video autoplay muted loop id="background-video">
+    <source src="mevinublog.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+    
+  </video>
+
   <div class="container">
     <header>
       <a href="https://mevinuabey.github.io" class="back-home">Back to Home</a>
