@@ -8,6 +8,8 @@
     --service-bg: rgba(0, 0, 0, 0.7);
     --artwork-bg: rgba(0, 0, 0, 0.7);
     --link-cat-bg: rgba(0, 0, 0, 0.7);
+    --accent-yellow: #ffcc00;
+    --accent-red: #ff6b6b;
     --top-bar-bg: transparent;
     --top-bar-border: transparent;
     --top-bar-hover: rgba(255, 255, 255, 0.15);
@@ -131,7 +133,10 @@ body {
 .logo-text {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-color);
+    background: linear-gradient(90deg, var(--accent-yellow), var(--accent-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .logo-subtext {
