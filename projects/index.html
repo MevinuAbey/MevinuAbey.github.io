@@ -1,39 +1,437 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects — Mevinu Abeysinghe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#060B06">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mevi's Projects</title>
+  <link rel="icon" href="https://mevinu.online/favicon.ico" />
+  <style>
+    /* --- Base styling --- */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #000000, #1a2135);
+      --text-primary: #e6eef8;
+      --text-secondary: #cbd5e1;
+      --accent-yellow: #ffcc00;
+      --accent-red: #ff6b6b;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      --card-shadow-hover: 0 12px 36px rgba(0,0,0,0.7);
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    /* --- Background Video Styling --- */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: blur(5px) brightness(0.7);
+    }
+    /* --- Container and Header --- */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      z-index: 2;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.25rem;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .back-home {
+      color: var(--accent-yellow);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s ease;
+    }
+    .back-home:hover {
+      color: var(--accent-red);
+    }
+    .back-home::before {
+      content: '←';
+    }
+    /* --- Projects Grid --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+    .project {
+      background: var(--card-bg);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-shadow-hover);
+    }
+    /* --- Project Image --- */
+    .project-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .project:hover .project-image img {
+      transform: scale(1.05);
+    }
+    .project-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      pointer-events: none;
+    }
+    /* --- Project content --- */
+    .content {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .tech {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tech::before {
+      content: '⚙️';
+      font-size: 1rem;
+    }
+    .tech span {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+    .project h2 {
+      font-size: 1.25rem;
+      margin: 0 0 0.75rem;
+      line-height: 1.3;
+    }
+    .project h2 a {
+      color: var(--accent-yellow);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .project h2 a:hover {
+      color: var(--accent-red);
+    }
+    .project p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+    .project-links a {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .demo-link {
+      background: var(--accent-yellow);
+      color: #000;
+    }
+    .code-link {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .demo-link:hover {
+      background: var(--accent-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .code-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    /* --- Footer --- */
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .github-link {
+      margin-bottom: 1.5rem;
+    }
+    .github-link a {
+      color: var(--accent-yellow);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+    .github-link a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent-yellow);
+      transform: translateY(-2px);
+    }
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    /* --- Media queries for responsiveness --- */
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+      .project h2 {
+        font-size: 1.1rem;
+      }
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .back-home {
+        order: -1;
+      }
+      .project-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Topbar -->
-  <header class="topbar glass blur">
-    <a class="brand" href="/">Mevinu</a>
-    <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="burger" aria-label="Open menu">☰</button>
-  </header>
+  <video autoplay muted loop id="background-video">
+    <source src="background_vid.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+  </video>
 
-  <!-- Hero -->
-  <section class="hero section reveal">
-    <h1>Projects</h1>
-    <p class="tagline">Things I’ve built, experimented with, and shipped.</p>
-  </section>
+  <div class="container">
+    <header>
+      <a href="https://mevinuabey.github.io" class="back-home">Back to Home</a>
+      <h1>💻 My Projects</h1>
+    </header>
+    
+    <div class="grid">
+      <!-- Project 1 - Portfolio Website -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Portfolio Website Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <h2>Portfolio Website</h2>
+          <p>A responsive portfolio website built with HTML, CSS, and JavaScript. Features dark mode and mobile-friendly design.</p>
+          <div class="project-links">
+            <a href="https://yourusername.github.io" target="_blank" class="demo-link">Live Demo</a>
+            <a href="https://github.com/yourusername/portfolio" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
 
-  <!-- All Projects -->
-  <section class="section reveal">
-    <div id="all-projects" class="grid"></div>
-  </section>
+      <!-- Project 2 - Weather App -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Weather App Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>API</span>
+            <span>JavaScript</span>
+            <span>CSS</span>
+          </div>
+          <h2>Weather App</h2>
+          <p>A weather application that fetches real-time data from an API. Shows temperature, humidity, and 5-day forecast.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" class="demo-link">Live Demo</a>
+            <a href="#" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
 
-  <footer class="foot">
-    <p>© 2025 Mevinu Abeysinghe • Projects</p>
-  </footer>
+      <!-- Project 3 - Task Manager -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Task Manager Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>JavaScript</span>
+            <span>Local Storage</span>
+            <span>Responsive</span>
+          </div>
+          <h2>Task Manager</h2>
+          <p>A simple task management application with local storage. Add, edit, delete, and mark tasks as complete.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" class="demo-link">Live Demo</a>
+            <a href="#" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
 
-  <script src="/assets/main.js" defer></script>
+      <!-- Project 4 - Calculator -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Calculator Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <h2>Calculator</h2>
+          <p>A functional calculator with basic arithmetic operations. Clean UI with keyboard support and responsive design.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" class="demo-link">Live Demo</a>
+            <a href="#" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 - Recipe Finder -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Recipe Finder Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>API</span>
+            <span>JavaScript</span>
+            <span>CSS Grid</span>
+          </div>
+          <h2>Recipe Finder</h2>
+          <p>Search for recipes by ingredient. Displays cooking instructions and nutritional information with a clean interface.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" class="demo-link">Live Demo</a>
+            <a href="#" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 - Blog Website -->
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Blog Website Screenshot">
+        </div>
+        <div class="content">
+          <div class="tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <h2>Blog Website</h2>
+          <p>A minimal blog website with categories, tags, and comment functionality. Built with pure frontend technologies.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" class="demo-link">Live Demo</a>
+            <a href="#" target="_blank" class="code-link">Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="github-link">
+        <a href="https://github.com/yourusername" target="_blank">
+          <i class="fab fa-github"></i>
+          View all on GitHub
+        </a>
+      </div>
+      <p class="footer-text">© <span id="currentYear"></span> Mevinu Thewjaya Abeysinghe</p>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Add click effect to buttons
+    document.querySelectorAll('.demo-link, .code-link').forEach(button => {
+      button.addEventListener('click', function(e) {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+    
+    // Preload images for better experience
+    window.addEventListener('load', function() {
+      const images = document.querySelectorAll('.project-image img');
+      images.forEach(img => {
+        const tempImg = new Image();
+        tempImg.src = img.src;
+      });
+    });
+  </script>
 </body>
 </html>
