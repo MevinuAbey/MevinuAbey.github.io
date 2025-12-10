@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-      <loc>https://mevinuabey.github.io/</loc>
-      <lastmod>2025-09-27</lastmod>
+      <loc>https://mevinu.online/</loc>
+      <lastmod>2025-12-11</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
-      <loc>https://mevinuabey.github.io/blog/index.html</loc>
-      <lastmod>2025-09-26</lastmod>
+      <loc>https://mevinu.online/blog/</loc>
+      <lastmod>2025-12-11</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://mevinuabey.github.io/projects/index.html</loc>
-      <lastmod>2025-09-27</lastmod>
+      <loc>https://mevinu.online/projects/</loc>
+      <lastmod>2025-12-11</lastmod>
       <changefreq>weekly</changefreq>
-      <priority>0.5</priority>
+      <priority>0.8</priority>
    </url>
 </urlset>
