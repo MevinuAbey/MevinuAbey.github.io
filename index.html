@@ -10,14 +10,18 @@
     
       gtag('config', 'G-ZHR8E3F63N');
     </script>
-	
+
     <meta charset="UTF-8">
-	<meta name="description" content="Welcome to the personal portfolio of Mevinu Abeysinghe. Explore my projects, read my blog, and connect with me on various social platforms. I'm a passionate developer and student from Sri Lanka.">
-	<meta name="theme-color" content="#060B06">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mevinu Abeysinghe | Personal Portfolio & Blog</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Welcome to the personal portfolio of Mevinu Abeysinghe. Explore my projects, read my blog, and connect with me on various social platforms. I'm a passionate developer and student from Sri Lanka.">
+    <meta name="author" content="Mevinu Abeysinghe">
 	<meta name="keywords" content="Mevinu Abeysinghe, Mevinu Thewjaya, Mevinu, Thewjaya, abeysinghe, personal portfolio, blog, web developer, Sri Lanka, projects, tech, software development ">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<meta name="author" content="Mevinu Abeysinghe">
-	    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta name="theme-color" content="#030305">
+
+	<!-- Open Graph Meta Tags (for social sharing) -->
     <meta property="og:title" content="Mevinu Abeysinghe | Personal Portfolio & Blog" />
     <meta property="og:description" content="Hi! I'm Mevinu. Explore my work and thoughts." />
     <meta property="og:image" content="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png" />
@@ -36,83 +40,157 @@
 
 	
 	<link rel="canonical" href="https://mevinu.online" />
-    <title>Mevinu Abeysinghe | Personal Portfolio & Blog</title>
-    <link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
 </head>
+
 <body>
-    <video class="background-video" autoplay muted loop playsinline loading="lazy" poster="images/video-poster.jpg">
-        <source src="background_vid.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay"></div>
-    <nav class="top-bar">
-        <div class="nav-container">
-            <a href="/" class="nav-logo animate-logo" aria-label="Mevinu's Portfolio Home">
-                <span class="logo-text">Mevinu Abeysinghe</span>
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Open Navigation Menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><button class="close-menu" id="close-menu" aria-label="Close Navigation Menu"><i class="fas fa-times-circle"></i></button></li>
-                <li><a href="https://mevinu.online/" class="nav-link" aria-current="page">Home</a></li>
-                <li><a href="/projects" class="nav-link">Projects</a></li>
-                <li><a href="/blog" class="nav-link">Blog</a></li>
-            </ul>
+    <div class="crt-overlay"></div>
+    <div class="grid-background"></div>
+    <div class="cursor-glow"></div>
+
+    <nav class="navbar">
+        <a href="#" class="logo">Mevinu<span class="dot">.</span></a>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="#connect">Connect</a>
+            <a href="/projects" class="external-link">Projects <i class="fas fa-arrow-right"></i></a>
         </div>
+        <button class="menu-btn" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
     </nav>
 
-    <header class="animate-on-scroll" role="banner">
-        <div class="header-content">
-            <h1 class="title-animation">Hi, I'm Mevinu</h1>
-            <p class="subtitle-animation">Sri Lankan Boy :). 2025</p>
-        </div>
-        <div class="scroll-indicator" aria-hidden="true">↓</div>
-    </header>
-
-	<section id="About Me" class="animate-on-scroll">
-        <h2 class="section-title">About Me</h2>
-        <p>I’m Mevinu Abeysinghe, a student developer passionate about tech, learning, and solving real problems. I love experimenting with new ideas.</p>
-        <a href="/projects" class="link-button">My Projects</a>
-		<a href="/blog" class="link-button">Read My Blog</a>
-    </section>
-	
-    <section id="links" class="animate-on-scroll" role="region" aria-labelledby="links-title">
-        <h2 class="section-title" id="links-title">Connect with Me</h2>
-        <div class="links-container">
-            <div class="link-category">
-                <h3>Professional</h3>
-                <ul>
-					<li><a href="mailto:m.mevinuabeysingha@gmail.com" aria-label="Email Address"><i class="fa-solid fa-envelope"></i> Email</a></li>
-                    <li><a href="https://github.com/MevinuAbey" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i> GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                    <li><a href="https://huggingface.co/Mevinu" target="_blank" aria-label="Hugging Face Profile"><i class="fas fa-robot"></i> Hugging Face</a></li>
-                    <li><a href="https://g.dev/Mevinu" target="_blank" aria-label="Google Developers Profile"><i class="fab fa-google"></i> Google Developers</a></li>
-                    <li><a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" aria-label="Kaggle Profile"><i class="fas fa-chart-bar"></i> Kaggle</a></li>
-                </ul>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="greeting fade-in">Hello, I'm</span>
+                <h1 class="name fade-in-up">Mevinu Abeysinghe</h1>
+                <p class="role fade-in-up delay-1">Student & Developer <span class="typing-text"></span><span
+                        class="cursor">|</span></p>
+                <p class="bio fade-in-up delay-2">Passionate about tech, learning, and solving real problems.</p>
+                <div class="cta-group fade-in-up delay-3">
+                    <a href="#connect" class="btn primary">Let's Connect</a>
+                    <a href="/blog" class="btn secondary">Read Blog</a>
+                </div>
             </div>
-            <div class="link-category">
-                <h3>Social</h3>
-                <ul>
-                    <li><a href="https://x.com/im_mevi" target="_blank" aria-label="X (Twitter) Profile"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a></li>
-                    <li><a href="https://instagram.com/mevi_nu07" target="_blank" aria-label="Instagram Profile"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="https://facebook.com/Mevi07" target="_blank" aria-label="Facebook Profile"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="https://www.threads.net/@mevi_nu07" target="_blank" aria-label="Threads Profile"><i class="fa-brands fa-threads"></i> Threads</a></li>
-		    		<li><a href="https://www.goodreads.com/mevinu" target="_blank" aria-label="Goodreads Profile"><i class="fab fa-goodreads"></i> Goodreads</a></li>
-                </ul>
+            <div class="hero-visual fade-in delay-3">
+                <div class="code-block-decoration">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <pre><code><span class="keyword">class</span> <span class="variable">Human</span>:
+  <span class="key">name</span> = <span class="string">"Mevinu Thewjaya Abeysinghe"</span>
+  <span class="key">location</span> = [<span class="string">"Earth"</span>, <span class="string">"Colombo"</span>, <span class="string">"Sri Lanka"</span>]     
+  <span class="key">passions</span> = [
+    <span class="string">"Coding"</span>, <span class="string">"AI/ML"</span>,
+    <span class="string">"Problem Solving"</span>, <span class="string">"Computer Science"</span>]
+  <span class="key">hobbies</span> = [
+    <span class="string">"Reading"</span>, <span class="string">"Photography"</span>,
+    <span class="string">"Gaming"</span>, <span class="string">"Movies"</span>]
+  </code></pre>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer role="contentinfo">
-        <p>&copy; 2025 Mevinu Thewjaya Abeysinghe.</p>
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass">
+                    <i class="fas fa-brain icon"></i>
+                    <h3>Curious Mind</h3>
+                    <p>Curious about how everything works, and eager to learn new things.🙂</p>
+                </div>
+                <div class="about-card glass">
+                    <i class="fas fa-laptop-code icon"></i>
+                    <h3>Tech Explorer</h3>
+                    <p>Exploring new tools and technologies every day. and adopting them to slove problems.👨‍💻</p>
+                </div>
+                <div class="about-card glass">
+                    <i class="fas fa-user icon"></i>
+                    <h3>The Human Behind the Code</h3>
+                    <p>A 17-year-old who enjoys learning, creating, and staying curious.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="connect" class="connect">
+            <div class="section-header">
+                <h2>Connect</h2>
+                <p>Find me on these platforms</p>
+            </div>
+
+            <div class="social-grid">
+                <!-- Professional -->
+                <a href="mailto:m.mevinuabeysingha@gmail.com" class="social-card">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" class="social-card">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/MevinuAbey" target="_blank" class="social-card">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://huggingface.co/Mevinu" target="_blank" class="social-card">
+                    <i class="fas fa-robot"></i>
+                    <span>HuggingFace</span>
+                </a>
+                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" class="social-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Kaggle</span>
+                </a>
+                <a href="https://g.dev/Mevinu" target="_blank" class="social-card">
+                    <i class="fab fa-google"></i>
+                    <span>G.Dev</span>
+                </a>
+                <!-- Social -->
+                <a href="https://x.com/im_mevi" target="_blank" class="social-card">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>X</span>
+                </a>
+                <a href="https://instagram.com/mevi_nu07" target="_blank" class="social-card">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://facebook.com/Mevi07" target="_blank" class="social-card">
+                    <i class="fab fa-facebook"></i>
+                    <span>facebook</span>
+                </a>
+                <a href="https://www.goodreads.com/mevinu" target="_blank" class="social-card">
+                    <i class="fab fa-goodreads"></i>
+                    <span>Goodreads</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> Mevinu Thewjaya Abeysinghe</i></p>
     </footer>
 
 	    <!-- Tawk.to Widget Code -->
@@ -128,63 +206,12 @@
        })();
    	</script>
 
-    <script>
-        // Hamburger and Close Menu
-        const hamburger = document.getElementById('hamburger');
-        const closeMenu = document.getElementById('close-menu');
-        const navLinks = document.getElementById('nav-links');
-        const body = document.body;
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-        const toggleMenu = () => {
-            const isOpen = navLinks.classList.toggle('active');
-            body.classList.toggle('no-scroll', isOpen);
-            hamburger.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-bars"></i>';
-            hamburger.setAttribute('aria-expanded', isOpen);
-            hamburger.setAttribute('aria-label', isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu');
-        };
-
-        hamburger.addEventListener('click', toggleMenu);
-        if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                body.classList.remove('no-scroll');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-                hamburger.setAttribute('aria-expanded', 'false');
-                hamburger.setAttribute('aria-label', 'Open Navigation Menu');
-            });
-        });
-
-        // Scroll Animations and Nav Bar Scroll Effect
-        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
-        const topBar = document.querySelector('.top-bar');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const items = entry.target.querySelectorAll('.service-item, .artwork-item');
-                    items.forEach((item, index) => {
-                        item.style.animationDelay = `${index * 0.1}s`;
-                        item.classList.add('animate-item');
-                    });
-                }
-            });
-        }, { threshold: 0.1 });
-
-        animateOnScrollElements.forEach(el => observer.observe(el));
-
-        window.addEventListener('scroll', () => {
-            topBar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Video Load Optimization
-        const video = document.querySelector('.background-video');
-        video.addEventListener('loadeddata', () => {
-            video.classList.add('loaded');
-        });
-    </script>
+    <script src="script.js"></script>
+    
 </body>
+
 </html>
