@@ -83,7 +83,8 @@
             <div class="download-buttons fade-in-up delay-3">
                 <a href="#" class="btn primary" id="android-download"><i class="fab fa-android"></i> Android</a>
                 <a href="#" class="btn primary" id="ios-download"><i class="fab fa-apple"></i> iOS</a>
-                <a href="https://github.com/MevinuAbey/mcards/releases/download/webrelease/MCards_Setup.exe" class="btn secondary" id="windows-download"><i class="fab fa-windows"></i> Windows</a>
+                <a href="https://github.com/MevinuAbey/mcards/releases/download/webrelease/MCards_Setup.exe"
+                    class="btn secondary" id="windows-download"><i class="fab fa-windows"></i> Windows</a>
             </div>
         </section>
 
@@ -237,7 +238,8 @@
                 version for this platform.
             </p>
             <div class="modal-actions">
-                <a href="https://github.com/MevinuAbey/mcards/releases/download/webrelease/MCards_Setup.exe" id="download-anyway" class="btn secondary small">Download anyway</a>
+                <a href="https://github.com/MevinuAbey/mcards/releases/download/webrelease/MCards_Setup.exe"
+                    id="download-anyway" class="btn secondary small">Download anyway</a>
                 <button id="close-modal" class="btn primary small">Back</button>
             </div>
         </div>
@@ -328,11 +330,68 @@
                 }
             });
 
+            // Function to detect CPU architecture
+            function detectArchitecture() {
+                const ua = navigator.userAgent.toLowerCase();
+                const platform = navigator.platform?.toLowerCase() || '';
+
+                // Check for x86_64 (Intel/AMD 64-bit)
+                if (platform.includes('win64') || platform.includes('x86_64') ||
+                    ua.includes('x86_64') || ua.includes('amd64')) {
+                    return 'x86_64';
+                }
+
+                // Check for ARM architectures
+                if (ua.includes('arm64') || ua.includes('aarch64') || platform.includes('arm64')) {
+                    return 'arm64-v8a';
+                }
+
+                if (ua.includes('armv7') || ua.includes('armv8')) {
+                    return 'armeabi-v7a';
+                }
+
+                // Default to arm64-v8a for most modern Android devices
+                if (/android/i.test(ua)) {
+                    return 'arm64-v8a';
+                }
+
+                // Fallback to arm64-v8a (most common)
+                return 'arm64-v8a';
+            }
+
+            // Function to get APK download URL based on architecture
+            function getApkUrl(arch) {
+                const baseUrl = 'https://github.com/MevinuAbey/mcards/releases/download/webrelease/';
+                const apkFiles = {
+                    'arm64-v8a': 'app-arm64-v8a-release.apk',
+                    'armeabi-v7a': 'app-armeabi-v7a-release.apk',
+                    'x86_64': 'app-x86_64-release.apk'
+                };
+                return baseUrl + apkFiles[arch];
+            }
+
             // Android Button logic
             androidBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
                 if (!isMobile()) {
-                    e.preventDefault();
                     desktopModal.classList.add('active');
+                } else {
+                    // Detect architecture and download appropriate APK
+                    const arch = detectArchitecture();
+                    const apkUrl = getApkUrl(arch);
+
+                    // Show a brief notification about which version is being downloaded
+                    const archNames = {
+                        'arm64-v8a': 'ARM64 (64-bit)',
+                        'armeabi-v7a': 'ARMv7 (32-bit)',
+                        'x86_64': 'x86_64 (Intel/AMD)'
+                    };
+
+                    console.log(`Downloading APK for ${archNames[arch]} architecture`);
+
+                    // Trigger download
+                    window.location.href = apkUrl;
                 }
             });
 
@@ -348,9 +407,22 @@
                 alert("Downloading Windows version...");
             });
 
-            downloadAndroidAnyway.addEventListener('click', () => {
+            downloadAndroidAnyway.addEventListener('click', (e) => {
+                e.preventDefault();
                 desktopModal.classList.remove('active');
-                alert("Downloading Android APK...");
+
+                // Detect architecture and download appropriate APK
+                const arch = detectArchitecture();
+                const apkUrl = getApkUrl(arch);
+
+                const archNames = {
+                    'arm64-v8a': 'ARM64 (64-bit)',
+                    'armeabi-v7a': 'ARMv7 (32-bit)',
+                    'x86_64': 'x86_64 (Intel/AMD)'
+                };
+
+                console.log(`Downloading APK for ${archNames[arch]} architecture`);
+                window.location.href = apkUrl;
             });
 
             // Close buttons
