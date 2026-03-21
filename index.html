@@ -26,7 +26,7 @@
 	<!-- Open Graph Meta Tags (for social sharing) -->
     <meta property="og:title" content="Mevinu Abeysinghe | Personal Portfolio & Blog" />
     <meta property="og:description" content="Hi! I'm Mevinu. Explore my work and thoughts." />
-    <meta property="og:image" content="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png" />
+    <meta property="og:image" content="https://mevinu.online/web-app-manifest-512x512.png" />
     <meta property="og:url" content="https://mevinu.online" /> <!-- Replace with your actual domain -->
     <meta property="og:type" content="website" />
 
@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mevinu Abeysinghe | Personal Portfolio & Blog">
     <meta name="twitter:description" content="A passionate developer from Sri Lanka. Check out my portfolio, blog, and projects.">
-    <meta name="twitter:image" content="https://i.ibb.co/PZkQdbcH/image-cropper-1745142519520.png">
+    <meta name="twitter:image" content="https://mevinu.online/web-app-manifest-512x512.png">
     <meta name="twitter:creator" content="@im_mevi">
 
     <!-- Google Site Verification Tag -->
@@ -43,12 +43,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800&display=swap"
         rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Icons (deferred for render performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
@@ -58,6 +61,70 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Schema.org: Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mevinu Abeysinghe",
+      "url": "https://mevinu.online",
+      "sameAs": [
+        "https://github.com/MevinuAbey",
+        "https://www.linkedin.com/in/mevinuabeysinghe",
+        "https://x.com/im_mevi",
+        "https://huggingface.co/Mevinu",
+        "https://www.kaggle.com/mevinuabeysinghe"
+      ],
+      "jobTitle": "Student & Developer",
+      "description": "17-year-old developer and AI/ML enthusiast from Sri Lanka.",
+      "address": { "@type": "PostalAddress", "addressCountry": "LK" }
+    }
+    </script>
+
+    <!-- Schema.org: WebSite (enables Sitelinks & Sitelinks Searchbox in Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Mevinu Abeysinghe",
+      "url": "https://mevinu.online",
+      "description": "Personal portfolio, blog, and projects of Mevinu Abeysinghe — student developer and AI/ML enthusiast from Sri Lanka.",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Mevinu Abeysinghe"
+      },
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "name": "Blog",
+          "url": "https://mevinu.online/blog/",
+          "description": "Thoughts and tutorials on AI, machine learning, and software development."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Projects",
+          "url": "https://mevinu.online/projects/",
+          "description": "A list of projects by Mevinu Abeysinghe, including mcards."
+        },
+        {
+          "@type": "WebPage",
+          "name": "mcards",
+          "url": "https://mevinu.online/projects/mcards/",
+          "description": "mcards — secure offline digital wallet with AES-256 encryption."
+        }
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mevinu.online/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
 </head>
 
@@ -148,40 +215,40 @@
                     <i class="fas fa-envelope"></i>
                     <span>Email</span>
                 </a>
-                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" class="social-card">
+                <a href="https://www.linkedin.com/in/mevinuabeysinghe" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com/MevinuAbey" target="_blank" class="social-card">
+                <a href="https://github.com/MevinuAbey" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-github"></i>
                     <span>GitHub</span>
                 </a>
-                <a href="https://huggingface.co/Mevinu" target="_blank" class="social-card">
+                <a href="https://huggingface.co/Mevinu" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fas fa-robot"></i>
                     <span>HuggingFace</span>
                 </a>
-                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" class="social-card">
+                <a href="https://www.kaggle.com/mevinuabeysinghe" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fas fa-chart-bar"></i>
                     <span>Kaggle</span>
                 </a>
-                <a href="https://g.dev/Mevinu" target="_blank" class="social-card">
+                <a href="https://g.dev/Mevinu" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-google"></i>
                     <span>G.Dev</span>
                 </a>
                 <!-- Social -->
-                <a href="https://x.com/im_mevi" target="_blank" class="social-card">
+                <a href="https://x.com/im_mevi" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fa-brands fa-x-twitter"></i>
                     <span>X</span>
                 </a>
-                <a href="https://instagram.com/mevi_nu07" target="_blank" class="social-card">
+                <a href="https://instagram.com/mevi_nu07" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </a>
-                <a href="https://facebook.com/Mevi07" target="_blank" class="social-card">
+                <a href="https://facebook.com/Mevi07" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-facebook"></i>
                     <span>facebook</span>
                 </a>
-                <a href="https://www.goodreads.com/mevinu" target="_blank" class="social-card">
+                <a href="https://www.goodreads.com/mevinu" target="_blank" rel="noopener noreferrer" class="social-card">
                     <i class="fab fa-goodreads"></i>
                     <span>Goodreads</span>
                 </a>
@@ -190,7 +257,8 @@
     </main>
 
     <footer>
-        <p>&copy; <script>document.write(new Date().getFullYear());</script> Mevinu Thewjaya Abeysinghe</i></p>
+        <p>&copy; <span id="year"></span> Mevinu Thewjaya Abeysinghe</p>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
 
 	    <!-- Tawk.to Widget Code -->
