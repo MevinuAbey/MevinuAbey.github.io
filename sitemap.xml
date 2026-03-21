@@ -3,23 +3,30 @@
 
    <url>
       <loc>https://mevinu.online/</loc>
-      <lastmod>2025-12-11</lastmod>
+      <lastmod>2026-03-21</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
 
    <url>
       <loc>https://mevinu.online/blog/</loc>
-      <lastmod>2025-12-11</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.3</priority>
+      <lastmod>2026-03-21</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
    </url>
 
    <url>
       <loc>https://mevinu.online/projects/</loc>
-      <lastmod>2025-12-11</lastmod>
+      <lastmod>2026-03-21</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.3</priority>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://mevinu.online/projects/mcards/</loc>
+      <lastmod>2026-03-21</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
    </url>
 
 </urlset>
