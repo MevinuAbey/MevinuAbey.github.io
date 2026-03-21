@@ -4,21 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mevinu | Projects</title>
-    <link rel="canonical" href="https://mevinu.online/" />
+    <title>Projects – Mevinu Abeysinghe | Flutter, AI & More</title>
+    <link rel="canonical" href="https://mevinu.online/projects/" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHR8E3F63N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHR8E3F63N');
+    </script>
 
     <!-- Meta Tags -->
-    <meta name="description" content="Explore the projects of Mevinu Abeysinghe.">
+    <meta name="description" content="Projects by Mevinu Abeysinghe — including mcards, a secure offline digital wallet built with Flutter and AES-256 encryption. More coming soon.">
+    <meta name="author" content="Mevinu Abeysinghe">
+    <meta name="keywords" content="Mevinu Abeysinghe, projects, Flutter, mcards, digital wallet, AES-256, Sri Lanka">
+    <meta name="theme-color" content="#030305">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Projects – Mevinu Abeysinghe" />
+    <meta property="og:description" content="Projects by Mevinu Abeysinghe — mcards secure offline wallet, and more Flutter & AI projects." />
+    <meta property="og:image" content="https://mevinu.online/web-app-manifest-512x512.png" />
+    <meta property="og:url" content="https://mevinu.online/projects/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects – Mevinu Abeysinghe">
+    <meta name="twitter:description" content="Projects by Mevinu Abeysinghe — mcards secure offline wallet, and more.">
+    <meta name="twitter:image" content="https://mevinu.online/web-app-manifest-512x512.png">
+    <meta name="twitter:creator" content="@im_mevi">
+
+    <!-- Schema.org Structured Data: CollectionPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Projects – Mevinu Abeysinghe",
+      "url": "https://mevinu.online/projects/",
+      "author": {
+        "@type": "Person",
+        "name": "Mevinu Abeysinghe",
+        "url": "https://mevinu.online"
+      },
+      "description": "A collection of projects by Mevinu Abeysinghe, including mcards — a secure offline digital wallet."
+    }
+    </script>
+
+    <!-- Schema.org: BreadcrumbList (signals hierarchy to Google for sitelinks) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mevinu.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://mevinu.online/projects/"
+        }
+      ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800&display=swap"
         rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Icons (deferred for render performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
@@ -187,9 +254,9 @@
     <main>
         <section class="projects-section">
             <div class="section-header">
-                <h2>My Projects</h2>
+                <h1>My Projects</h1>
                 <div class="line"></div>
-                <p style="margin-top: 1rem; color: #888;">list of my projects.</p>
+                <p style="margin-top: 1rem; color: #888;">A list of my projects.</p>
             </div>
 
             <div class="projects-grid">
@@ -209,7 +276,7 @@
                         <h3>mcards</h3>
                         <p>Secure, Offline Digital Wallet. Protected by AES-256 encryption and biometrics.</p>
                         <div class="project-links">
-                            <a href="mcards/" class="project-btn demo">View Page</a>
+                            <a href="mcards/" class="project-btn demo" rel="noopener">View Page</a>
                         </div>
                     </div>
                 </article>
@@ -221,9 +288,8 @@
     </main>
 
     <footer>
-        <p>&copy;
-            <script>document.write(new Date().getFullYear());</script> Mevinu Thewjaya Abeysinghe</i>
-        </p>
+        <p>&copy; <span id="year"></span> Mevinu Thewjaya Abeysinghe</p>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
 
     <!-- GSAP -->
