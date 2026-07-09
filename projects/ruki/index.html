@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHR8E3F63N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-ZHR8E3F63N');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruki AI | Intelligent Shopping Assistant for Kapruka</title>
+    <link rel="canonical" href="https://mevinu.online/projects/ruki/" />
+    <meta name="description" content="Ruki AI is a state-of-the-art, conversational shopping agent for Kapruka, powered by OpenAI LLMs and a robust Python backend with a three-tier architecture.">
+    <meta name="author" content="Mevinu Abeysinghe">
+    <meta name="keywords" content="Ruki AI, Kapruka, conversational commerce, LLM, Python, FastAPI, shopping assistant, Mevinu Abeysinghe">
+    <meta name="theme-color" content="#e3daf7">
+    <meta property="og:title" content="Ruki AI – Intelligent Shopping Assistant" />
+    <meta property="og:description" content="A state-of-the-art conversational shopping agent for Kapruka." />
+    <meta property="og:image" content="https://mevinu.online/projects/ruki/ruki_logo.png" />
+    <meta property="og:url" content="https://mevinu.online/projects/ruki/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ruki AI – Intelligent Shopping Assistant">
+    <meta name="twitter:description" content="A state-of-the-art conversational shopping agent for Kapruka.">
+    <meta name="twitter:image" content="https://mevinu.online/projects/ruki/ruki_logo.png">
+    <meta name="twitter:creator" content="@im_mevi">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+
+<body>
+
+    <nav class="navbar ruki-navbar">
+        <a href="https://mevinu.online" class="logo">Mevinu<span class="dot" style="color: var(--ruki-purple);">.</span></a>
+        <div class="nav-links">
+            <a href="https://mevinu.online">Home</a>
+            <a href="https://mevinu.online#about">About</a>
+            <a href="https://mevinu.online/blog">Blog</a>
+            <a href="https://mevinu.online#connect">Connect</a>
+            <a href="https://mevinu.online/projects" class="external-link active"
+                style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.2;padding:0.4rem 1rem;background:var(--ruki-purple);">
+                <span>Projects</span>
+                <span style="font-size:0.7rem;opacity:0.85;letter-spacing:1px;color:var(--ruki-gold);">Ruki AI</span>
+            </a>
+        </div>
+        <button class="menu-btn" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <main>
+
+        <!-- ============================================================
+             HERO
+        ============================================================ -->
+        <section class="ruki-hero">
+            <div class="hero-dot-grid"></div>
+            <span class="hero-eyebrow">AI Shopping Agent</span>
+            <img src="ruki_logo.png" alt="Ruki AI Icon" class="app-logo fade-in-up">
+            <img src="ruki_text_logo.png" alt="Ruki AI" class="ruki-text-logo fade-in-up delay-1">
+            <p class="hero-description fade-in-up delay-2">
+                Ruki AI is a <strong>conversational commerce platform</strong> designed specifically for Kapruka, Sri Lanka's leading online gift and delivery platform. Built with a Python/FastAPI backend and powered by OpenAI's Responses API, Ruki transforms the traditional e-commerce experience into a seamless, natural language-driven journey.
+            </p>
+            <div class="hero-badges fade-in-up delay-3">
+                <a href="https://ruki.mevinu.online" target="_blank" class="hero-badge gold" style="font-size: 1.1rem; padding: 0.8rem 1.8rem; text-decoration: none;"><i class="fas fa-external-link-alt"></i> Visit Ruki</a>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 1 — CONVERSATIONAL COMMERCE + SCREENSHOT
+        ============================================================ -->
+        <section class="ruki-section bg-pattern">
+
+            <div class="ruki-section-header">
+                <span class="section-label label-gold">Core Product</span>
+                <h2 style="color: var(--ruki-purple); text-shadow: 5px 5px 0px var(--border);">Conversational<br>Commerce</h2>
+                <div class="underline-bar bar-gold"></div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="background: var(--ruki-lavender);">
+                    <div class="feature-icon-box icon-gold"><i class="fas fa-search"></i></div>
+                    <h3>Natural Language Search</h3>
+                    <p>Users describe what they need — <em>"birthday cake for my mom, chocolate, under Rs. 5000"</em> — and Ruki's intent engine surfaces the most relevant products instantly.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-mist);">
+                    <div class="feature-icon-box icon-purple"><i class="fas fa-brain"></i></div>
+                    <h3>Contextual Memory</h3>
+                    <p>Ruki tracks conversational context across turns. <em>"Show me cheaper ones"</em> is resolved against the last search result without re-querying.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-gold);">
+                    <div class="feature-icon-box icon-dark"><i class="fas fa-route"></i></div>
+                    <h3>Intelligent Routing</h3>
+                    <p>A fast intent model classifies intent in milliseconds. The full conversation model receives a pre-classified hint, saving tokens and reducing latency dramatically.</p>
+                </div>
+            </div>
+
+            <!-- Screenshot 1 -->
+            <div class="split-row" style="margin-top: 5rem;">
+                <div class="split-text">
+                    <h3 style="text-shadow: 4px 4px 0px var(--ruki-lavender);">Smart Product Discovery</h3>
+                    <p>The Recommendation Engine analyzes user intent and re-ranks products contextually. In-stock items, visually rich products, and price-matched results are promoted automatically.</p>
+                    <p>Ruki handles pagination, deduplication, and sorting entirely behind the scenes, presenting clean, manageable product carousels to the user.</p>
+                </div>
+                <div class="split-img-wrap gold-bg">
+                    <img src="s1.png" alt="Ruki AI product discovery interface screenshot">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2 — USER EXPERIENCE (PURPLE BG)
+        ============================================================ -->
+        <section class="ruki-section bg-purple">
+
+            <div class="ruki-section-header">
+                <span class="section-label label-gold">User Experience</span>
+                <h2 style="color: #fff; text-shadow: 5px 5px 0px var(--border);">Built for Real<br>People</h2>
+                <div class="underline-bar bar-gold"></div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="background: var(--ruki-mist);">
+                    <div class="feature-icon-box icon-gold"><i class="fas fa-memory"></i></div>
+                    <h3>Persistent Memory</h3>
+                    <p>Ruki stores user preferences, dietary restrictions, past interests, and saved addresses. <em>"I'm allergic to nuts"</em> is remembered and applied as a product filter from that moment forward.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-lavender);">
+                    <div class="feature-icon-box icon-dark"><i class="fas fa-user-secret"></i></div>
+                    <h3>Guest Shadow Profiles</h3>
+                    <p>Guests browse and build carts without signing up. A <strong>shadow profile</strong> tracks their session. When they register, everything — cart, wishlist, chat history — merges seamlessly.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-gold);">
+                    <div class="feature-icon-box icon-purple"><i class="fas fa-list-ul"></i></div>
+                    <h3>Custom Lists & Wishlists</h3>
+                    <p>Users create named product collections mid-conversation: <em>"Add this to my Anniversary list."</em> Lists persist across sessions and can be recalled by name at any time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box icon-gold"><i class="fas fa-language"></i></div>
+                    <h3>Multi-Language Support</h3>
+                    <p>The language layer handles dynamic switching between English, Sinhala, and Tamil — even mid-conversation. The intent router classifies language on every turn.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-mist);">
+                    <div class="feature-icon-box icon-purple"><i class="fas fa-truck"></i></div>
+                    <h3>Order Tracking</h3>
+                    <p>Post-purchase, users simply ask <em>"Where is my order?"</em> Ruki queries Kapruka's backend and returns live tracking status directly inside the chat.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-lavender);">
+                    <div class="feature-icon-box icon-dark"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>Natural Cart Control</h3>
+                    <p><em>"Add two of those"</em>, <em>"Remove the flower bouquet"</em>, <em>"Change the cake to vanilla"</em> — cart operations via full natural language with no UI clicks required.</p>
+                </div>
+            </div>
+
+            <!-- Screenshot 2 -->
+            <div class="split-row flip" style="margin-top: 5rem;">
+                <div class="split-text" style="border-color: var(--ruki-gold); box-shadow: 8px 8px 0px var(--ruki-gold);">
+                    <h3 style="text-shadow: 4px 4px 0px var(--ruki-gold);">Cart & Checkout Flow</h3>
+                    <p>Users can add, remove, or modify quantities of items in their cart via natural language.</p>
+                    <p>The Checkout Engine governs a robust state machine that safely guides users through the checkout process, validating cities and delivery zones to prevent logistical errors before payment.</p>
+                </div>
+                <div class="split-img-wrap mist-bg">
+                    <img src="s2.png" alt="Ruki AI cart and checkout interface screenshot">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3 — SYSTEM ARCHITECTURE & TECH STACK
+        ============================================================ -->
+        <section class="ruki-section bg-cream">
+
+            <div class="ruki-section-header">
+                <span class="section-label label-purple">Architecture</span>
+                <h2 style="color: var(--primary); text-shadow: 5px 5px 0px var(--ruki-lavender);">Three-Tier<br>Architecture</h2>
+                <div class="underline-bar bar-purple"></div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="background: var(--ruki-gold);">
+                    <div class="feature-icon-box icon-dark"><i class="fas fa-server"></i></div>
+                    <h3>Tier 1 — API Gateway</h3>
+                    <p><strong>FastAPI</strong> handles all HTTP and SSE streaming routes. Auth middleware manages session, guest, and monitor access securely.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-lavender);">
+                    <div class="feature-icon-box icon-purple"><i class="fas fa-robot"></i></div>
+                    <h3>Tier 2 — AI Layer</h3>
+                    <p>An <strong>Intent Router</strong> pre-classifies each message. The <strong>Conversation Model</strong> streams text and intelligently invokes backend tools.</p>
+                </div>
+                <div class="feature-card" style="background: var(--ruki-mist);">
+                    <div class="feature-icon-box icon-gold"><i class="fas fa-cogs"></i></div>
+                    <h3>Tier 3 — Engine Layer</h3>
+                    <p>Six Python Engines (<strong>Product, Recommendation, Checkout, Delivery, Memory, Lists</strong>) execute all business logic behind the scenes.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 5rem;">
+                <div class="ruki-section-header">
+                    <span class="section-label label-lavender">Stack</span>
+                    <h2 style="color: var(--primary); text-shadow: 5px 5px 0px var(--ruki-lavender);">Full Tech Stack</h2>
+                    <div class="underline-bar bar-purple"></div>
+                </div>
+
+                <div class="tech-stack-grid">
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon icon-gold"><i class="fas fa-bolt"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">Web Framework</div>
+                            <div class="name">FastAPI</div>
+                        </div>
+                    </div>
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon" style="background: var(--ruki-mist); border: 2px solid var(--border); box-shadow: 2px 2px 0px var(--border);"><i class="fas fa-server"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">ASGI Server</div>
+                            <div class="name">Uvicorn</div>
+                        </div>
+                    </div>
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon icon-purple"><i class="fas fa-robot"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">AI Models</div>
+                            <div class="name">OpenAI API</div>
+                        </div>
+                    </div>
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon icon-dark"><i class="fas fa-database"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">Database</div>
+                            <div class="name">SQLite</div>
+                        </div>
+                    </div>
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon icon-dark"><i class="fas fa-code"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">Frontend</div>
+                            <div class="name">Vanilla HTML / JS</div>
+                        </div>
+                    </div>
+                    <div class="tech-pill">
+                        <div class="tech-pill-icon icon-purple"><i class="fas fa-key"></i></div>
+                        <div class="tech-pill-text">
+                            <div class="layer">Auth</div>
+                            <div class="name">Cookie Sessions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             THE ONE RULE CALLOUT
+        ============================================================ -->
+        <section class="ruki-section bg-cream" style="padding-bottom: 8rem;">
+            <div class="callout-banner">
+                <h3>The Core Principle</h3>
+                <p>The LLM reasons.<br>Python orchestrates.</p>
+                <div class="callout-bar"></div>
+                <p class="sub">Every component has one responsibility. The AI understands intent and communicates naturally. Python handles pagination, validation, state management, and all business logic — with no exceptions.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background: var(--ruki-purple); border-top: var(--border-width) solid var(--border);">
+        <p>&copy; <span id="year"></span> Mevinu Thewjaya Abeysinghe</p>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../../script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Feature cards
+            gsap.utils.toArray('.feature-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 88%' },
+                    y: 50, opacity: 0, duration: 0.55, delay: (i % 3) * 0.08
+                });
+            });
+
+            // Split rows
+            gsap.utils.toArray('.split-row').forEach(row => {
+                gsap.from(row, {
+                    scrollTrigger: { trigger: row, start: 'top 80%' },
+                    y: 60, opacity: 0, duration: 0.7
+                });
+            });
+
+            // Tech pills
+            gsap.utils.toArray('.tech-pill').forEach((pill, i) => {
+                gsap.from(pill, {
+                    scrollTrigger: { trigger: pill, start: 'top 90%' },
+                    y: 30, opacity: 0, duration: 0.4, delay: (i % 4) * 0.07
+                });
+            });
+
+            // Callout banner
+            gsap.from('.callout-banner', {
+                scrollTrigger: { trigger: '.callout-banner', start: 'top 80%' },
+                scale: 0.95, opacity: 0, duration: 0.7
+            });
+        });
+    </script>
+
+</body>
+</html>
